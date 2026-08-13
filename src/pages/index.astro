@@ -1,16 +1,41 @@
 ---
-const title = 'AMD FFL';
----
+import BaseLayout from '../layouts/BaseLayout.astro';
+import franchises from '../../data/franchises.json';
+import owners from '../../data/owners.json';
+import { teams, ownerTenures } from '../lib/catalog';
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title>{title}</title>
-  </head>
-  <body>
-    <main>
-      <h1>AMD FFL</h1>
-      <p>The new historical archive is under construction.</p>
-    </main>
-  </body>
-</html>
+const currentTeams = franchises.length;
+const historicalTeams = teams.length;
+const ownerCount = owners.length;
+const tenureCount = ownerTenures.length;
+---
+<BaseLayout title="AMD FFL | Historical Archive">
+  <main>
+    <section class="hero">
+      <div class="shell">
+        <div class="eyebrow">AMD Fantasy Football League</div>
+        <h1>History keeps score.</h1>
+        <p>More than two decades of championships, heartbreak, franchise changes, terrible decisions, great players, and enough trash talk to make the official record worth preserving.</p>
+        <div class="stats-grid grid">
+          <div class="card stat"><strong>{currentTeams}</strong><span>Franchise slots</span></div>
+          <div class="card stat"><strong>{historicalTeams}</strong><span>Historical team identities</span></div>
+          <div class="card stat"><strong>{ownerCount}</strong><span>Owner identities</span></div>
+          <div class="card stat"><strong>{tenureCount}</strong><span>Recorded ownership tenures</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="shell">
+        <span class="pill">THE ARCHIVE</span>
+        <h2>Everything important. And plenty that isn't.</h2>
+        <div class="feature-grid grid">
+          <a class="card feature-card" href="/champions"><h3>Championship History</h3><p>Every Cathedral Bowl champion, runner-up, score, and future opportunity for public humiliation.</p></a>
+          <a class="card feature-card" href="/records"><h3>Record Book</h3><p>All-time standings and league records, normalized from the original AMD FFL archive.</p></a>
+          <a class="card feature-card" href="/franchises"><h3>Franchise Lineage</h3><p>Follow every franchise through owners, name changes, relocations, resurrections, and regrettable branding decisions.</p></a>
+          <a class="card feature-card" href="/hall-of-fame"><h3>Hall of Fame</h3><p>The players who earned a permanent place in AMD FFL history.</p></a>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
