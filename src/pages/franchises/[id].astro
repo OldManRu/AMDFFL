@@ -1,0 +1,9 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import FranchiseStory from '../../components/FranchiseStory.astro';
+import { franchisePaths, franchiseProfile } from '../../lib/franchise-profile';
+import '../../styles/franchise-detail.css';
+export const getStaticPaths=franchisePaths;
+const p=franchiseProfile(Astro.props.franchise);
+---
+<BaseLayout title={`${p.current?.name??`Franchise ${p.id}`} | AMD FFL`}><main><section class="page-head"><div class="shell"><a class="back" href="/franchises">← All Franchises</a><div class="eyebrow">Franchise F{String(p.id).padStart(2,'0')}</div><h1>{p.current?.name??`Franchise ${p.id}`}</h1></div></section><section class="shell profile-grid"><FranchiseStory chapters={p.chapters}/></section></main></BaseLayout>
