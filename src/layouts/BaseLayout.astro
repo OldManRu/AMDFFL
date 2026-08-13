@@ -1,0 +1,31 @@
+---
+import '../styles/global.css';
+const { title = 'AMD FFL', description = 'The historical archive of AMD Fantasy Football League.' } = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="shell nav">
+        <a class="brand" href="/">AMD FFL</a>
+        <nav class="nav-links" aria-label="Primary">
+          <a href="/champions">Champions</a>
+          <a href="/records">Records</a>
+          <a href="/franchises">Franchises</a>
+          <a href="/hall-of-fame">Hall of Fame</a>
+          <a href="/memorial">In Memoriam</a>
+        </nav>
+      </div>
+    </header>
+    <slot />
+    <footer class="footer">
+      <div class="shell">AMD FFL historical archive · Serious records, unserious people.</div>
+    </footer>
+  </body>
+</html>
