@@ -1,0 +1,4 @@
+---
+const { chapters=[] }=Astro.props;
+---
+<div class="story"><div class="eyebrow">From the original archive</div><h2>The Story</h2>{chapters.map((c:any)=><article class="chapter"><h3>{String(c.heading??'Franchise History').replace(/^\*/,'')}</h3>{String(c.narrative??'').split('\n').filter(Boolean).map((x:string)=><p>{x.replace(/^[-–]\s*/,'')}</p>)}</article>)}</div>
