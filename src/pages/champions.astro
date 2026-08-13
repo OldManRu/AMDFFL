@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { teams } from '../lib/catalog';
+
+const modules = import.meta.glob('../../data/championships/*.json', { eager: true, import: 'default' });
+const games = Object.values(modules).flat().sort((a: any, b: any) => b.season - a.season);
+const teamName = (id: string) => teams.find((team) => team.teamId === id)?.name ?? id;
+---
+<BaseLayout title="Champions | AMD FFL">
+  <main class="shell">
+    <header class="page-head">
+      <div class="eyebrow">Cathedral Bowl</div>
+      <h1>Championship History</h1>
+      <p class="muted">The official title-game archive. Source anomalies stay visible until they are verified.</p>
+    </header>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Season</th><th>Champion</th><th>Score</th><th>Runner-up</th><th>Score</th></tr></thead>
+        <tbody>
+          {games.map((game: any) => (
+            <tr>
+              <td>{game.season}</td>
+              <td><strong>{teamName(game.winnerTeamId)}</strong></td>
+              <td>{game.winnerScore}</td>
+              <td>{teamName(game.loserTeamId)}</td>
+              <td>{game.loserScore}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <p class="muted" style="margin:18px 0 60px">Seasons 7 and 8 remain on the reconciliation ledger and will be inserted as soon as the final canonical records are persisted.</p>
+  </main>
+</BaseLayout>
