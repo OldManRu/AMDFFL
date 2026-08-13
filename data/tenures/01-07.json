@@ -1,0 +1,21 @@
+[
+  {"historicalId":"1","ownerIds":["kirk"],"franchiseId":1,"teamId":"east-peoria-red-raiders"},
+  {"historicalId":"2","ownerIds":["terry"],"franchiseId":2,"teamId":"cathedral-golden-gales"},
+  {"historicalId":"2.1","ownerIds":["john"],"franchiseId":2,"teamId":"west-catholic-burrs"},
+  {"historicalId":"2.2","ownerIds":["kim"],"franchiseId":2,"teamId":"deckerville-eagles"},
+  {"historicalId":"3","ownerIds":["jamie"],"franchiseId":3,"teamId":"creston-polar-bears"},
+  {"historicalId":"3.1","ownerIds":["chance"],"franchiseId":3,"teamId":"excelsior-springs-tigers"},
+  {"historicalId":"4","ownerIds":["jake"],"franchiseId":4,"teamId":"turkeyfoot-rams"},
+  {"historicalId":"4.1","ownerIds":["robert"],"franchiseId":4,"teamId":"illini-west-chargers"},
+  {"historicalId":"5.0","ownerIds":[],"franchiseId":5,"teamId":"springfield-stars"},
+  {"historicalId":"5.1","ownerIds":["paul"],"franchiseId":5,"teamId":"leto-falcons-f5"},
+  {"historicalId":"5.2","ownerIds":["sean"],"franchiseId":5,"teamId":"east-grand-rapids-pioneers"},
+  {"historicalId":"6.1","ownerIds":["tony"],"franchiseId":6,"teamId":"oak-ridge"},
+  {"historicalId":"6.2","ownerIds":["ricky"],"franchiseId":6,"teamId":"hinsdale-pacers"},
+  {"historicalId":"6.3","ownerIds":["tim-m"],"franchiseId":6,"teamId":"great-falls-bison"},
+  {"historicalId":"6.4","ownerIds":["brian"],"franchiseId":6,"teamId":"lees-summit-tigers-f6"},
+  {"historicalId":"7.1","ownerIds":["carl"],"franchiseId":7,"teamId":"vincennes-lincoln-alices"},
+  {"historicalId":"7.2","ownerIds":["nick"],"franchiseId":7,"teamId":"storm-lake-tornadoes"},
+  {"historicalId":"7.3","ownerIds":["kevin"],"franchiseId":7,"teamId":"kimball-knights"},
+  {"historicalId":"7.4","ownerIds":["troy"],"franchiseId":7,"teamId":"roosevelt-rough-riders"}
+]
