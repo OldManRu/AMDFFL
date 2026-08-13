@@ -1,0 +1,13 @@
+[
+  {"teamId":"hennessey-eagles","franchiseId":8,"historicalId":"8.1","name":"Hennessey Eagles"},
+  {"teamId":"highland-park-giants","franchiseId":8,"historicalId":"8.2","name":"Highland Park Giants"},
+  {"teamId":"simi-valley-pioneers","franchiseId":8,"historicalId":"8.3","name":"Simi Valley Pioneers"},
+  {"teamId":"brophy-broncos","franchiseId":9,"historicalId":"9.1","name":"Brophy Broncos"},
+  {"teamId":"cedaredge-bruins","franchiseId":9,"historicalId":"9.2","name":"Cedaredge Bruins"},
+  {"teamId":"blacklick-vikings","franchiseId":9,"historicalId":"9.3","name":"Blacklick Vikings"},
+  {"teamId":"lamar-trojans","franchiseId":9,"historicalId":"9.4","name":"Lamar Trojans"},
+  {"teamId":"oak-grove-panthers","franchiseId":10,"historicalId":"10.1","name":"Oak Grove Panthers"},
+  {"teamId":"paisley-panthers","franchiseId":10,"historicalId":"10.2","name":"Paisley Panthers"},
+  {"teamId":"lake-shore-shorians","franchiseId":10,"historicalId":"10.3","name":"Lake Shore Shorians"},
+  {"teamId":"ridge-bolts","franchiseId":10,"historicalId":"10.4","name":"Ridge Bolts"}
+]
