@@ -1,0 +1,8 @@
+[
+  {"teamId":"central-wildcats","franchiseId":11,"historicalId":"11.1","name":"Central Wildcats"},
+  {"teamId":"morton-hogs","franchiseId":11,"historicalId":"11.2","name":"Morton Hogs"},
+  {"teamId":"leto-falcons-f11","franchiseId":11,"historicalId":"11.3","name":"Leto Falcons"},
+  {"teamId":"waterbury-cowboys","franchiseId":12,"historicalId":"12.0","name":"Waterbury Cowboys"},
+  {"teamId":"lees-summit-tigers-f12","franchiseId":12,"historicalId":"12.1","name":"Lee's Summit Tigers"},
+  {"teamId":"pekin-dragons","franchiseId":12,"historicalId":"12.2","name":"Pekin Dragons"}
+]
