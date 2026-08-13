@@ -1,0 +1,21 @@
+[
+  {"teamId":"east-peoria-red-raiders","franchiseId":1,"historicalId":"1","name":"East Peoria Red Raiders"},
+  {"teamId":"cathedral-golden-gales","franchiseId":2,"historicalId":"2","name":"Cathedral Golden Gales"},
+  {"teamId":"west-catholic-burrs","franchiseId":2,"historicalId":"2.1","name":"West Catholic Burrs"},
+  {"teamId":"deckerville-eagles","franchiseId":2,"historicalId":"2.2","name":"Deckerville Eagles"},
+  {"teamId":"creston-polar-bears","franchiseId":3,"historicalId":"3","name":"Creston Polar Bears"},
+  {"teamId":"excelsior-springs-tigers","franchiseId":3,"historicalId":"3.1","name":"Excelsior Springs Tigers"},
+  {"teamId":"turkeyfoot-rams","franchiseId":4,"historicalId":"4","name":"Turkeyfoot Rams"},
+  {"teamId":"illini-west-chargers","franchiseId":4,"historicalId":"4.1","name":"Illini West Chargers"},
+  {"teamId":"springfield-stars","franchiseId":5,"historicalId":"5.0","name":"Springfield Stars"},
+  {"teamId":"leto-falcons-f5","franchiseId":5,"historicalId":"5.1","name":"Leto Falcons"},
+  {"teamId":"east-grand-rapids-pioneers","franchiseId":5,"historicalId":"5.2","name":"East Grand Rapids Pioneers"},
+  {"teamId":"oak-ridge","franchiseId":6,"historicalId":"6.1","name":"Oak Ridge"},
+  {"teamId":"hinsdale-pacers","franchiseId":6,"historicalId":"6.2","name":"Hinsdale Pacers"},
+  {"teamId":"great-falls-bison","franchiseId":6,"historicalId":"6.3","name":"Great Falls Bison"},
+  {"teamId":"lees-summit-tigers-f6","franchiseId":6,"historicalId":"6.4","name":"Lee's Summit Tigers"},
+  {"teamId":"vincennes-lincoln-alices","franchiseId":7,"historicalId":"7.1","name":"Vincennes Lincoln Alices"},
+  {"teamId":"storm-lake-tornadoes","franchiseId":7,"historicalId":"7.2","name":"Storm Lake Tornadoes"},
+  {"teamId":"kimball-knights","franchiseId":7,"historicalId":"7.3","name":"Kimball Knights"},
+  {"teamId":"roosevelt-rough-riders","franchiseId":7,"historicalId":"7.4","name":"Roosevelt Rough Riders"}
+]
