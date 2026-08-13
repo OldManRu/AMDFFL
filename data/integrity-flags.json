@@ -1,5 +1,4 @@
 [
-  {"area":"Champions","issue":"Cathedral Bowl 20 winner score is stored as 2229.6 in the WordPress source.","action":"Verify against RTSports or another historical source before correcting."},
   {"area":"Records","issue":"Lake Shore Shorians years are stored as 2013-27 in the WordPress source.","action":"Verify before normalization."},
   {"area":"Records","issue":"Lamar County Trojans has no playoff W-L or playoff win percentage in the source table.","action":"Treat as missing data rather than zero."},
   {"area":"Head-2-Head","issue":"Historical matchup data is embedded from external Google Sheets and is not contained in the WordPress export.","action":"Import those sheets separately."}
