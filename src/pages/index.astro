@@ -1,11 +1,12 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import '../styles/home.css';
 import franchises from '../../data/franchises.json';
+import owners from '../../data/owners.json';
 import { teams } from '../lib/catalog';
 const teamName = (id:string) => teams.find(t => t.teamId === id)?.name ?? id;
 const championshipModules = import.meta.glob('../../data/championships/*.json', { eager: true });
 const championships = Object.values(championshipModules).flatMap((m:any) => m.default ?? m).sort((a:any,b:any)=>b.season-a.season);
-const confirmed = championships.filter((c:any)=>!c.sourceNote);
 const current = championships.find((c:any)=>c.season===20);
 const recent = championships.slice(0,5);
 ---
@@ -17,10 +18,10 @@ const recent = championships.slice(0,5);
 <aside class="champ-card"><div class="panel-label">★ CURRENT CHAMPION ★</div><div class="champ-mark">S20</div><h2>{current ? teamName(current.winnerTeamId) : 'Season 20 Champion'}</h2><span>SEASON 20 CHAMPION</span><p>Cathedral Bowl XX</p><a class="btn red" href="/champions">View Championship</a></aside>
 </div></section>
 <section class="shell stat-ribbon">
-<div><b>20</b><span>SEASONS</span><small>2005–2025</small></div><div><b>{confirmed.length}</b><span>CONFIRMED CHAMPIONS</span><small>Historical archive</small></div><div><b>{franchises.length}</b><span>FRANCHISES</span><small>{teams.length} team identities</small></div><div><b>20</b><span>CATHEDRAL BOWLS</span><small>The ultimate goal</small></div>
+<div><b>20</b><span>SEASONS</span><small>Two decades of bad decisions</small></div><div><b>{franchises.length}</b><span>FRANCHISES</span><small>Still answering the bell</small></div><div><b>{teams.length}</b><span>TEAM IDENTITIES</span><small>Rebrands happened</small></div><div><b>{owners.length}</b><span>OWNERS</span><small>Past and present</small></div>
 </section>
 <section class="shell dashboard">
-<div class="panel recent"><h3>RECENT CHAMPIONS</h3>{recent.map((c:any)=><div class="result"><span>S{c.season}</span><strong>{teamName(c.winnerTeamId)}</strong><small>{c.sourceNote ? 'Pending score verification' : `${c.winnerScore} – ${c.loserScore}`}</small></div>)}<a href="/champions">VIEW ALL CHAMPIONS →</a></div>
+<div class="panel recent"><h3>RECENT CHAMPIONS</h3>{recent.map((c:any)=><div class="result"><span>S{c.season}</span><strong>{teamName(c.winnerTeamId)}</strong><small>{c.sourceNote ? 'Score flagged in archive' : `${c.winnerScore} – ${c.loserScore}`}</small></div>)}<a href="/champions">VIEW ALL CHAMPIONS →</a></div>
 <div class="panel record"><h3>RECORD BOOK</h3><div class="big-number">20+</div><span>YEARS OF LEAGUE HISTORY</span><p>Wins, losses, streaks, awards, heartbreak and the statistical evidence required for arguments nobody intends to let go.</p><a href="/records">EXPLORE RECORDS →</a></div>
 <div class="panel traditions"><h3>LEAGUE TRADITIONS</h3><p>⚔ Hard-fought battles</p><p>☏ Unmatched trash talk</p><p>♟ Lifelong friendships</p><p>♜ The pursuit of glory</p><a href="/franchises">OUR STORY →</a></div>
 <aside class="panel shame"><h3>★ SHAME STATS ★</h3><p>The numbers are being sharpened.</p><p>Championship droughts, title-game heartbreak, playoff futility and other completely objective forms of public accountability are coming from the normalized archive.</p><a href="/records">STATS DON'T LIE →</a></aside>
