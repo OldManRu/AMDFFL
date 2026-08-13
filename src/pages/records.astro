@@ -1,13 +1,15 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import headlines from '../../data/legacy-records/headlines.json';
+const shameLabels = ['Fewest Wins, Season','Most Consecutive Losses','Lowest Score, Game','Least Points, Season','Most Lopsided Game'];
+const glory = headlines.filter((r:any) => !shameLabels.includes(r.record));
+const shame = headlines.filter((r:any) => shameLabels.includes(r.record));
 ---
 <BaseLayout title="Records | AMD FFL">
 <main>
 <section class="page-head"><div class="shell"><div class="eyebrow">Receipts, preserved forever</div><h1>The Record Book</h1><p class="muted">Greatness, disaster, dominance, collapse — all reduced to numbers so nobody gets to rewrite history later.</p></div></section>
-<section class="shell records-grid">
-{headlines.map((r:any)=><article class="card record-card"><span class="eyebrow">{r.record}</span><strong>{r.value}</strong><p>{r.detail}</p></article>)}
-</section>
+<section class="shell records-grid">{glory.map((r:any)=><article class="card record-card"><span class="eyebrow">{r.record}</span><strong>{r.value}</strong><p>{r.detail}</p></article>)}</section>
+<section class="shame-zone"><div class="shell"><div class="eyebrow">Permanent record • No appeals</div><h2>The Hall of Shame</h2><p class="tagline">Records nobody was trying to set.</p><div class="records-grid shame-grid">{shame.map((r:any)=><article class="card shame-card"><span class="eyebrow">INDUCTED FOR HISTORIC INEPTITUDE</span><h3>{r.record}</h3><strong>{r.value}</strong><p>{r.detail}</p></article>)}</div><p class="warning">Rebranding does not erase the record. The archive remembers.</p></div></section>
 </main>
-<style>.records-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;padding:34px 0 60px}.record-card strong{display:block;margin:8px 0;font-size:2.2rem}.record-card p{margin:0;color:var(--muted)}@media(max-width:700px){.records-grid{grid-template-columns:1fr}}</style>
+<style>.records-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;padding:34px 0 60px}.record-card strong,.shame-card strong{display:block;margin:8px 0;font-size:2.2rem}.record-card p,.shame-card p{margin:0;color:var(--muted)}.shame-zone{padding:50px 0;background:#0d0f12;border-top:1px solid #402126}.shame-zone h2{margin:6px 0 0;font-size:2.4rem;text-transform:uppercase}.tagline{margin:2px 0 10px;color:#9a7b7e;font-style:italic}.shame-grid{padding-top:20px}.shame-card{border-color:#48272c}.warning{padding:14px 18px;border-left:3px solid #79323a;background:#151113;color:#967a7d;font-weight:700;text-transform:uppercase}@media(max-width:700px){.records-grid{grid-template-columns:1fr}}</style>
 </BaseLayout>
