@@ -1,7 +1,7 @@
 [
-  {"season":1,"winner":"Vincennes Lincoln Alices","winnerScore":117.2,"runnerUp":"Simi Valley Pioneers","runnerUpScore":83.2},
-  {"season":2,"winner":"Hennessey Eagles","winnerScore":95.1,"runnerUp":"Milan Indians","runnerUpScore":92.7},
-  {"season":3,"winner":"Vincennes Lincoln Alices","winnerScore":109.5,"runnerUp":"Hennessey Eagles","runnerUpScore":91.6},
-  {"season":4,"winner":"Simi Valley Pioneers","winnerScore":123.4,"runnerUp":"Vincennes Lincoln Alices","runnerUpScore":112.8},
-  {"season":5,"winner":"Milan Indians","winnerScore":118.9,"runnerUp":"Simi Valley Pioneers","runnerUpScore":105.7}
+  {"bowlNumber":1,"year":2006,"winner":"Oak Grove Panthers","winnerScore":125.5,"runnerUp":"Cathedral Golden Gales","runnerUpScore":113.45},
+  {"bowlNumber":2,"winner":"Cathedral Golden Gales","winnerScore":152.15,"runnerUp":"Oak Ridges Eagles","runnerUpScore":117.85},
+  {"bowlNumber":3,"winner":"Cathedral Golden Gales","winnerScore":206.1,"runnerUp":"Huron Tigers","runnerUpScore":146.2},
+  {"bowlNumber":4,"winner":"Huro n Tigers","winnerScore":185.45,"runnerUp":"Cathedral Golden Gales","runnerUpScore":114.75,"sourceNote":"Team name contains a space in the WordPress source; preserved pending verification."},
+  {"bowlNumber":5,"winner":"Vincennes Lincoln Alices","winnerScore":150.3,"runnerUp":"Central Wildcats","runnerUpScore":86.75}
 ]
