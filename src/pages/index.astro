@@ -1,41 +1,30 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import franchises from '../../data/franchises.json';
-import owners from '../../data/owners.json';
-import { teams, ownerTenures } from '../lib/catalog';
-
-const currentTeams = franchises.length;
-const historicalTeams = teams.length;
-const ownerCount = owners.length;
-const tenureCount = ownerTenures.length;
+import { teams } from '../lib/catalog';
+const teamName = (id:string) => teams.find(t => t.teamId === id)?.name ?? id;
+const championshipModules = import.meta.glob('../../data/championships/*.json', { eager: true });
+const championships = Object.values(championshipModules).flatMap((m:any) => m.default ?? m).sort((a:any,b:any)=>b.season-a.season);
+const confirmed = championships.filter((c:any)=>!c.sourceNote);
+const current = championships.find((c:any)=>c.season===20);
+const recent = championships.slice(0,5);
 ---
-<BaseLayout title="AMD FFL | Historical Archive">
-  <main>
-    <section class="hero">
-      <div class="shell">
-        <div class="eyebrow">AMD Fantasy Football League</div>
-        <h1>History keeps score.</h1>
-        <p>More than two decades of championships, heartbreak, franchise changes, terrible decisions, great players, and enough trash talk to make the official record worth preserving.</p>
-        <div class="stats-grid grid">
-          <div class="card stat"><strong>{currentTeams}</strong><span>Franchise slots</span></div>
-          <div class="card stat"><strong>{historicalTeams}</strong><span>Historical team identities</span></div>
-          <div class="card stat"><strong>{ownerCount}</strong><span>Owner identities</span></div>
-          <div class="card stat"><strong>{tenureCount}</strong><span>Recorded ownership tenures</span></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="shell">
-        <span class="pill">THE ARCHIVE</span>
-        <h2>Everything important. And plenty that isn't.</h2>
-        <div class="feature-grid grid">
-          <a class="card feature-card" href="/champions"><h3>Championship History</h3><p>Every Cathedral Bowl champion, runner-up, score, and future opportunity for public humiliation.</p></a>
-          <a class="card feature-card" href="/records"><h3>Record Book</h3><p>All-time standings and league records, normalized from the original AMD FFL archive.</p></a>
-          <a class="card feature-card" href="/franchises"><h3>Franchise Lineage</h3><p>Follow every franchise through owners, name changes, relocations, resurrections, and regrettable branding decisions.</p></a>
-          <a class="card feature-card" href="/hall-of-fame"><h3>Hall of Fame</h3><p>The players who earned a permanent place in AMD FFL history.</p></a>
-        </div>
-      </div>
-    </section>
-  </main>
+<BaseLayout title="AMD FFL | More Than a League. It's a Legacy.">
+<main class="home">
+<section class="home-hero"><div class="shell hero-grid">
+<div class="hero-copy"><div class="kicker">20 SEASONS. COUNTLESS MEMORIES. ONE CATHEDRAL BOWL.</div><h1>MORE THAN A LEAGUE.<br/><em>IT'S A LEGACY.</em></h1><p>The AMD Fantasy Football League has been family, competition, and tradition since 2005. We don't just play for a trophy — we play for bragging rights that last all year.</p><div class="actions"><a class="btn primary" href="/franchises">Explore History</a><a class="btn" href="/champions">View Champions</a></div></div>
+<div class="trophy-stage"><div class="trophy-ball">◆</div><div class="trophy-base">AMD FANTASY FOOTBALL LEAGUE<br/><strong>CATHEDRAL BOWL</strong><br/>CHAMPION</div></div>
+<aside class="champ-card"><div class="panel-label">★ CURRENT CHAMPION ★</div><div class="champ-mark">S20</div><h2>{current ? teamName(current.winnerTeamId) : 'Season 20 Champion'}</h2><span>SEASON 20 CHAMPION</span><p>Cathedral Bowl XX</p><a class="btn red" href="/champions">View Championship</a></aside>
+</div></section>
+<section class="shell stat-ribbon">
+<div><b>20</b><span>SEASONS</span><small>2005–2025</small></div><div><b>{confirmed.length}</b><span>CONFIRMED CHAMPIONS</span><small>Historical archive</small></div><div><b>{franchises.length}</b><span>FRANCHISES</span><small>{teams.length} team identities</small></div><div><b>20</b><span>CATHEDRAL BOWLS</span><small>The ultimate goal</small></div>
+</section>
+<section class="shell dashboard">
+<div class="panel recent"><h3>RECENT CHAMPIONS</h3>{recent.map((c:any)=><div class="result"><span>S{c.season}</span><strong>{teamName(c.winnerTeamId)}</strong><small>{c.sourceNote ? 'Pending score verification' : `${c.winnerScore} – ${c.loserScore}`}</small></div>)}<a href="/champions">VIEW ALL CHAMPIONS →</a></div>
+<div class="panel record"><h3>RECORD BOOK</h3><div class="big-number">20+</div><span>YEARS OF LEAGUE HISTORY</span><p>Wins, losses, streaks, awards, heartbreak and the statistical evidence required for arguments nobody intends to let go.</p><a href="/records">EXPLORE RECORDS →</a></div>
+<div class="panel traditions"><h3>LEAGUE TRADITIONS</h3><p>⚔ Hard-fought battles</p><p>☏ Unmatched trash talk</p><p>♟ Lifelong friendships</p><p>♜ The pursuit of glory</p><a href="/franchises">OUR STORY →</a></div>
+<aside class="panel shame"><h3>★ SHAME STATS ★</h3><p>The numbers are being sharpened.</p><p>Championship droughts, title-game heartbreak, playoff futility and other completely objective forms of public accountability are coming from the normalized archive.</p><a href="/records">STATS DON'T LIE →</a></aside>
+</section>
+<section class="shell archive-strip"><div><h3>20 YEARS OF<br/>CATHEDRAL BOWLS</h3><p>Relive every championship battle in the archive.</p><a href="/champions">VIEW ALL →</a></div>{recent.map((c:any)=><a class="archive-tile" href="/champions"><span>S{c.season}</span><b>{teamName(c.winnerTeamId)}</b><small>CATHEDRAL BOWL</small></a>)}</section>
+</main>
 </BaseLayout>
