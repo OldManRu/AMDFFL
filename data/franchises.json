@@ -1,1 +1,16 @@
-[]
+[
+  {"franchiseId":1,"historicalId":"1","activeTeamId":"east-peoria-red-raiders"},
+  {"franchiseId":2,"historicalId":"2","activeTeamId":"deckerville-eagles"},
+  {"franchiseId":3,"historicalId":"3","activeTeamId":"excelsior-springs-tigers"},
+  {"franchiseId":4,"historicalId":"4","activeTeamId":"illini-west-chargers"},
+  {"franchiseId":5,"historicalId":"5","activeTeamId":"east-grand-rapids-pioneers"},
+  {"franchiseId":6,"historicalId":"6","activeTeamId":"lees-summit-tigers-f6"},
+  {"franchiseId":7,"historicalId":"7","activeTeamId":"roosevelt-rough-riders"},
+  {"franchiseId":8,"historicalId":"8","activeTeamId":"simi-valley-pioneers"},
+  {"franchiseId":9,"historicalId":"9","activeTeamId":"lamar-trojans"},
+  {"franchiseId":10,"historicalId":"10","activeTeamId":"ridge-bolts"},
+  {"franchiseId":11,"historicalId":"11","activeTeamId":"leto-falcons-f11"},
+  {"franchiseId":12,"historicalId":"12","activeTeamId":"pekin-dragons"},
+  {"franchiseId":13,"historicalId":"13","activeTeamId":"mervo-mustangs"},
+  {"franchiseId":14,"historicalId":"14","activeTeamId":"sandusky-redskins"}
+]
