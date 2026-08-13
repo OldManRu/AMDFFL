@@ -1,15 +1,32 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import headlines from '../../data/legacy-records/headlines.json';
+import franchises from '../../data/franchises.json';
+import { teams } from '../lib/teams';
 const shameLabels = ['Fewest Wins, Season','Most Consecutive Losses','Lowest Score, Game','Least Points, Season','Most Lopsided Game'];
 const glory = headlines.filter((r:any) => !shameLabels.includes(r.record));
 const shame = headlines.filter((r:any) => shameLabels.includes(r.record));
+const mods = import.meta.glob('../../data/championships/*.json',{eager:true});
+const bowls = Object.values(mods).flatMap((m:any)=>m.default ?? m);
+const teamById = new Map(teams.map((t:any)=>[t.teamId,t]));
+const currentSeason = Math.max(...bowls.map((b:any)=>b.season));
+const legacy = franchises.map((f:any)=>{
+  const lineage = teams.filter((t:any)=>t.franchiseId===f.franchiseId);
+  const ids = new Set(lineage.map((t:any)=>t.teamId));
+  const wins = bowls.filter((b:any)=>ids.has(b.winnerTeamId));
+  const losses = bowls.filter((b:any)=>ids.has(b.loserTeamId));
+  const lastTitle = wins.length ? Math.max(...wins.map((b:any)=>b.season)) : null;
+  const current = teamById.get(f.activeTeamId) as any;
+  return {name:current?.name ?? `Franchise ${f.franchiseId}`,titles:wins.length,appearances:wins.length+losses.length,lastTitle,drought:lastTitle===null?null:currentSeason-lastTitle};
+}).sort((a,b)=>b.titles-a.titles || b.appearances-a.appearances || a.name.localeCompare(b.name));
+const droughts = [...legacy].sort((a,b)=>(b.drought ?? 999)-(a.drought ?? 999));
 ---
-<BaseLayout title="Records | AMD FFL">
-<main>
+<BaseLayout title="Records | AMD FFL"><main>
 <section class="page-head"><div class="shell"><div class="eyebrow">Receipts, preserved forever</div><h1>The Record Book</h1><p class="muted">Greatness, disaster, dominance, collapse — all reduced to numbers so nobody gets to rewrite history later.</p></div></section>
 <section class="shell records-grid">{glory.map((r:any)=><article class="card record-card"><span class="eyebrow">{r.record}</span><strong>{r.value}</strong><p>{r.detail}</p></article>)}</section>
+<section class="legacy-zone"><div class="shell"><div class="eyebrow">Cathedral Bowl history</div><h2>Championship Legacy</h2><div class="legacy-table"><div class="legacy-row head"><span>Franchise</span><span>Titles</span><span>Apps</span><span>Last Title</span></div>{legacy.map((r:any)=><div class="legacy-row"><strong>{r.name}</strong><span>{r.titles}</span><span>{r.appearances}</span><span>{r.lastTitle ? `S${r.lastTitle}` : '—'}</span></div>)}</div><p class="note">Seasons 7–8 remain pending in the archive, so championship totals will update when those results are restored.</p></div></section>
+<section class="drought-zone"><div class="shell"><div class="eyebrow">Current suffering</div><h2>Championship Drought Watch</h2><div class="drought-grid">{droughts.map((r:any)=><article class="card drought-card"><strong>{r.drought===null?'NEVER':r.drought}</strong><span>{r.drought===null?'TITLE ON RECORD':r.drought===1?'SEASON':'SEASONS'}</span><h3>{r.name}</h3><p>{r.lastTitle ? `Last title: Season ${r.lastTitle}` : 'No championship currently recorded.'}</p></article>)}</div></div></section>
 <section class="shame-zone"><div class="shell"><div class="eyebrow">Permanent record • No appeals</div><h2>The Hall of Shame</h2><p class="tagline">Records nobody was trying to set.</p><div class="records-grid shame-grid">{shame.map((r:any)=><article class="card shame-card"><span class="eyebrow">INDUCTED FOR HISTORIC INEPTITUDE</span><h3>{r.record}</h3><strong>{r.value}</strong><p>{r.detail}</p></article>)}</div><p class="warning">Rebranding does not erase the record. The archive remembers.</p></div></section>
-</main>
-<style>.records-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;padding:34px 0 60px}.record-card strong,.shame-card strong{display:block;margin:8px 0;font-size:2.2rem}.record-card p,.shame-card p{margin:0;color:var(--muted)}.shame-zone{padding:50px 0;background:#0d0f12;border-top:1px solid #402126}.shame-zone h2{margin:6px 0 0;font-size:2.4rem;text-transform:uppercase}.tagline{margin:2px 0 10px;color:#9a7b7e;font-style:italic}.shame-grid{padding-top:20px}.shame-card{border-color:#48272c}.warning{padding:14px 18px;border-left:3px solid #79323a;background:#151113;color:#967a7d;font-weight:700;text-transform:uppercase}@media(max-width:700px){.records-grid{grid-template-columns:1fr}}</style>
-</BaseLayout>
+</main><style>
+.records-grid,.drought-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.records-grid{padding:34px 0 60px}.record-card strong,.shame-card strong,.drought-card strong{display:block;margin:8px 0;font-size:2.2rem}.record-card p,.shame-card p,.drought-card p{margin:0;color:var(--muted)}.legacy-zone,.drought-zone{padding:48px 0;border-top:1px solid var(--line)}.legacy-zone h2,.drought-zone h2,.shame-zone h2{margin:6px 0 22px;font-size:2.4rem;text-transform:uppercase}.legacy-table{border:1px solid var(--line);border-radius:8px;overflow:hidden}.legacy-row{display:grid;grid-template-columns:1fr 90px 90px 120px;gap:12px;padding:13px 16px;border-bottom:1px solid var(--line)}.legacy-row:last-child{border-bottom:0}.legacy-row.head{background:#171c22;color:var(--muted);font-size:.7rem;font-weight:900;text-transform:uppercase;letter-spacing:.08em}.note{color:var(--muted);font-size:.8rem}.drought-card span{color:var(--accent);font-size:.65rem;font-weight:900;letter-spacing:.1em}.drought-card h3{margin:8px 0}.shame-zone{padding:50px 0;background:#0d0f12;border-top:1px solid #402126}.tagline{margin:2px 0 10px;color:#9a7b7e;font-style:italic}.shame-grid{padding-top:20px}.shame-card{border-color:#48272c}.warning{padding:14px 18px;border-left:3px solid #79323a;background:#151113;color:#967a7d;font-weight:700;text-transform:uppercase}@media(max-width:700px){.records-grid,.drought-grid{grid-template-columns:1fr}.legacy-row{grid-template-columns:1fr 55px 55px 80px;font-size:.8rem}}
+</style></BaseLayout>
