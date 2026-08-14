@@ -20,10 +20,51 @@
   letter-spacing:-.05em;
 }
 
+/* Give each championship score real horizontal space instead of forcing a third center column. */
+.champ-score{
+  position:relative;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  gap:18px;
+  align-items:end;
+  padding-top:29px;
+}
+
+.champ-score>div{
+  min-width:0;
+}
+
+.champ-score>div:first-child{
+  text-align:left;
+}
+
+.champ-score .runner{
+  text-align:right;
+}
+
+.champ-score em{
+  position:absolute;
+  top:10px;
+  left:50%;
+  transform:translateX(-50%);
+  white-space:nowrap;
+}
+
 .champ-score b{
-  font-size:1.65rem;
-  font-weight:800;
-  letter-spacing:-.025em;
+  display:block;
+  max-width:100%;
+  font-size:1.62rem;
+  font-weight:850;
+  line-height:1;
+  letter-spacing:0;
+  white-space:nowrap;
+}
+
+.champ-score small{
+  display:block;
+  max-width:none;
+  margin-top:5px;
+  line-height:1.2;
 }
 
 .archive-tile span{
@@ -34,4 +75,6 @@
 
 @media(max-width:720px){
   .stat-ribbon b{font-size:2.7rem}
+  .champ-score{gap:12px}
+  .champ-score b{font-size:1.48rem}
 }
