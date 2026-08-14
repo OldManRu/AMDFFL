@@ -19,15 +19,15 @@
   letter-spacing:-.05em;
 }
 
-/* Championship scores need clarity more than display-font personality. */
+/* Two roomy score columns with a deliberately narrow FINAL column between them. */
 .champ-score{
   position:relative;
   display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:20px;
+  grid-template-columns:minmax(0,1fr) 34px minmax(0,1fr);
+  gap:8px;
   align-items:start;
   margin:18px 0;
-  padding:28px 0 14px;
+  padding:14px 0;
   border-top:1px solid #3b3221;
   border-bottom:1px solid #3b3221;
 }
@@ -43,15 +43,18 @@
 .champ-score .runner{text-align:right;align-items:flex-end}
 
 .champ-score em{
-  position:absolute;
-  top:9px;
-  left:50%;
-  transform:translateX(-50%);
+  position:static;
+  align-self:start;
+  justify-self:center;
+  margin-top:5px;
+  transform:none;
   color:#6f7780;
-  font-size:.5rem;
+  font-size:.46rem;
   font-style:normal;
   font-weight:800;
-  letter-spacing:.14em;
+  line-height:1;
+  letter-spacing:.08em;
+  white-space:nowrap;
 }
 
 /* Beat the original .champ-score b rule in home.css with higher specificity. */
@@ -94,7 +97,8 @@
 
 @media(max-width:720px){
   .stat-ribbon b{font-size:2.7rem}
-  .champ-score{gap:16px}
+  .champ-score{grid-template-columns:minmax(0,1fr) 30px minmax(0,1fr);gap:6px}
   .champ-card .champ-score b,
   .champ-card .champ-score .runner b{font-size:1.4rem}
+  .champ-score em{font-size:.43rem}
 }
