@@ -15,5 +15,5 @@ const path = Astro.url.pathname;
 </div></header>
 <slot />
 <footer class="footer"><div class="shell footer-inner">★ <strong>ONE LEAGUE. ONE TROPHY. ETERNAL BRAGGING RIGHTS.</strong> ★</div><div class="shell footer-meta">AMD FFL historical archive · Serious records, unserious people.</div></footer>
-{path==='/pro-bowls' && <script src="/scripts/pro-bowls-normalized.js"></script>}
+{path==='/pro-bowls' && <script is:inline src="/scripts/pro-bowls-normalized.js"></script>}
 </body></html>
