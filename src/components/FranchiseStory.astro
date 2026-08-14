@@ -1,4 +1,6 @@
 ---
 const { chapters=[] }=Astro.props;
+const chapterTitle=(c:any)=>String(c.heading??c.team??'Franchise History').replace(/^\*/,'');
+const cleanNarrative=(value:any)=>String(value??'').replace(/\s*\.\.\.\s*and they all lived happily ever after\.?(?:\s*LOL)?'?\s*$/i,'');
 ---
-<div class="story"><div class="eyebrow">From the original archive</div><h2>The Story</h2>{chapters.map((c:any)=><article class="chapter"><h3>{String(c.heading??'Franchise History').replace(/^\*/,'')}</h3>{String(c.narrative??'').split('\n').filter(Boolean).map((x:string)=><p>{x.replace(/^[-–]\s*/,'')}</p>)}</article>)}</div>
+<div class="story"><div class="eyebrow">From the original archive</div><h2>The Story</h2>{chapters.map((c:any)=><article class="chapter"><h3>{chapterTitle(c)}</h3>{cleanNarrative(c.narrative).split('\n').filter(Boolean).map((x:string)=><p>{x.replace(/^[-–]\s*/,'')}</p>)}</article>)}</div>
