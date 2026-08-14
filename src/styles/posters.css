@@ -1,0 +1,27 @@
+.posters-page{background:radial-gradient(circle at 50% 0,rgba(217,173,79,.05),transparent 26%),#0b0e12}
+.posters-page .page-head{position:relative;overflow:hidden;border-bottom:1px solid rgba(217,173,79,.15);background:radial-gradient(circle at 20% 10%,rgba(199,40,59,.08),transparent 32%),radial-gradient(circle at 80% 10%,rgba(36,166,223,.08),transparent 32%)}
+.posters-page .page-head:after{content:"ARCHIVE";position:absolute;right:4%;bottom:-14px;color:rgba(255,255,255,.018);font-size:7rem;font-weight:950;letter-spacing:-.05em}
+.poster-wrap{padding:48px 0 72px}
+.poster-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.poster-card{position:relative;display:grid;gap:12px;padding:12px 12px 14px;border:1px solid #313841;border-radius:12px;background:linear-gradient(160deg,#171b21,#0e1115);color:inherit;text-align:left;cursor:pointer;box-shadow:0 18px 42px rgba(0,0,0,.18);transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease}
+.poster-card:before{content:"";position:absolute;inset:8px;border:1px solid rgba(217,173,79,.05);border-radius:8px;pointer-events:none}
+.poster-card:hover{transform:translateY(-5px);border-color:#735f30;box-shadow:0 28px 60px rgba(0,0,0,.3)}
+.poster-image-wrap{position:relative;overflow:hidden;border-radius:8px;background:#070a0d}
+.poster-image-wrap:after{content:"VIEW";position:absolute;left:50%;bottom:16px;transform:translate(-50%,8px);padding:7px 10px;border:1px solid rgba(217,173,79,.45);border-radius:999px;background:rgba(7,10,13,.82);color:#e2bd64;font-size:.58rem;font-weight:900;letter-spacing:.16em;opacity:0;transition:.2s ease}
+.poster-card:hover .poster-image-wrap:after{transform:translate(-50%,0);opacity:1}
+.poster-card img{display:block;width:100%;aspect-ratio:3/4;object-fit:contain;background:#070a0d;transition:transform .25s ease,filter .25s ease}
+.poster-card:hover img{transform:scale(1.015);filter:brightness(1.04)}
+.poster-meta{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:0 3px}
+.poster-meta span{color:#d9ad4f;font-size:.68rem;font-weight:900;letter-spacing:.12em}
+.poster-meta small{color:#68727d;font-size:.6rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase}
+.poster-note{display:flex;gap:15px;align-items:center;margin-top:26px;padding:19px 22px;border:1px solid #2d343c;border-left:3px solid #d9ad4f;border-radius:8px;background:#11161c}
+.poster-note strong{color:#d9ad4f;text-transform:uppercase;letter-spacing:.04em}.poster-note span{color:var(--muted)}
+.poster-modal{width:min(96vw,1180px);max-width:none;padding:0;border:1px solid #424b55;border-radius:14px;background:#070a0e;color:#fff;box-shadow:0 36px 100px rgba(0,0,0,.82)}
+.poster-modal::backdrop{background:rgba(0,0,0,.88);backdrop-filter:blur(5px)}
+.modal-frame{display:grid;place-items:center;padding:34px 34px 26px}
+.modal-frame img{display:block;max-width:100%;max-height:80vh;object-fit:contain;filter:drop-shadow(0 22px 36px rgba(0,0,0,.5))}
+.modal-title{margin-top:16px;color:#d9ad4f;font-size:.76rem;font-weight:900;letter-spacing:.14em}
+.modal-close{position:absolute;top:13px;right:15px;z-index:2;width:44px;height:44px;border:1px solid #4c5661;border-radius:50%;background:rgba(9,13,17,.9);color:#fff;font-size:1.8rem;line-height:1;cursor:pointer;transition:.18s ease}
+.modal-close:hover{transform:rotate(4deg);border-color:#d9ad4f;color:#d9ad4f}
+@media(max-width:900px){.poster-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.posters-page .page-head:after{font-size:5rem}}
+@media(max-width:600px){.poster-grid{grid-template-columns:1fr}.poster-note{display:block}.poster-note span{display:block;margin-top:7px}.modal-frame{padding:22px 18px 18px}.modal-frame img{max-height:76vh}.posters-page .page-head:after{display:none}}
