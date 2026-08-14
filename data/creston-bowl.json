@@ -1,0 +1,22 @@
+[
+  {"season":1,"name":"Toilet Bowl","winnerTeamId":"leto-falcons-f5","winnerScore":96.6,"loserTeamId":"huron-tigers","loserScore":89.6},
+  {"season":2,"name":"Toilet Bowl","winnerTeamId":"leto-falcons-f5","winnerScore":132,"loserTeamId":"struthers-puledros-wildcats","loserScore":98.45},
+  {"season":3,"name":"Toilet Bowl","winnerTeamId":"leto-falcons-f5","winnerScore":162.3,"loserTeamId":"creston-polar-bears","loserScore":150.85},
+  {"season":4,"name":"Toilet Bowl","winnerTeamId":"creston-polar-bears","winnerScore":157.2,"loserTeamId":"simi-valley-pioneers","loserScore":127.45},
+  {"season":5,"name":"JRussell Bowl","winnerTeamId":"paisley-panthers","winnerScore":160.45,"loserTeamId":"cedaredge-bruins","loserScore":136.1},
+  {"season":6,"name":"JRussell Bowl","winnerTeamId":"creston-polar-bears","winnerScore":158.95,"loserTeamId":"turkeyfoot-rams","loserScore":148.65},
+  {"season":7,"name":"JRussell Bowl","winnerTeamId":"creston-polar-bears","winnerScore":158.95,"loserTeamId":"simi-valley-pioneers","loserScore":155},
+  {"season":8,"name":"JRussell Bowl","winnerTeamId":"cedaredge-bruins","winnerScore":180.1,"loserTeamId":"turkeyfoot-rams","loserScore":158.65},
+  {"season":9,"name":"JRussell Bowl","winnerTeamId":"leto-falcons-f11","winnerScore":175.1,"loserTeamId":"parkersburg-big-red","loserScore":127.2},
+  {"season":10,"name":"JRussell Bowl","winnerTeamId":"simi-valley-pioneers","winnerScore":150.25,"loserTeamId":"lake-shore-shorians","loserScore":107.5},
+  {"season":11,"name":"JRussell Bowl","winnerTeamId":"roosevelt-rough-riders","winnerScore":119.05,"loserTeamId":"great-falls-bison","loserScore":117.65},
+  {"season":12,"name":"JRussell Bowl","winnerTeamId":"creston-polar-bears","winnerScore":148.6,"loserTeamId":"mervo-mustangs","loserScore":144.4},
+  {"season":13,"name":"JRussell Bowl","winnerTeamId":"mervo-mustangs","winnerScore":206.4,"loserTeamId":"creston-polar-bears","loserScore":178.05},
+  {"season":14,"name":"JRussell Bowl","winnerTeamId":"creston-polar-bears","winnerScore":181.2,"loserTeamId":"mervo-mustangs","loserScore":171.4},
+  {"season":15,"name":"JRussell Bowl","winnerTeamId":"cathedral-golden-gales","winnerScore":167.7,"loserTeamId":"creston-polar-bears","loserScore":155.9},
+  {"season":16,"name":"JRussell Bowl","winnerTeamId":"roosevelt-rough-riders","winnerScore":175.7,"loserTeamId":"creston-polar-bears","loserScore":87.9},
+  {"season":17,"name":"Creston Bowl","winnerTeamId":"excelsior-springs-tigers","winnerScore":180.54,"loserTeamId":"simi-valley-pioneers","loserScore":143.47},
+  {"season":18,"name":"Creston Bowl","winnerTeamId":"excelsior-springs-tigers","winnerScore":176.14,"loserTeamId":"east-grand-rapids-pioneers","loserScore":112.7},
+  {"season":19,"name":"Creston Bowl","winnerTeamId":"lees-summit-tigers-f6","winnerScore":194.58,"loserTeamId":"east-peoria-red-raiders","loserScore":161.48},
+  {"season":20,"name":"Creston Bowl","winnerTeamId":"illini-west-chargers","winnerScore":141.61,"loserTeamId":"lamar-trojans","loserScore":117.1}
+]
