@@ -7,10 +7,10 @@
   display:flex;
   align-items:center;
   justify-content:center;
-  width:116px;
-  min-width:116px;
+  width:88px;
+  min-width:88px;
   padding:0;
-  margin:0;
+  margin:0 4px 0 0;
   border:0;
   background:transparent;
   box-shadow:none;
@@ -20,20 +20,23 @@
 
 .brand-mark{
   display:block;
-  width:104px;
-  height:auto;
-  max-height:78px;
+  width:76px;
+  height:76px;
   object-fit:contain;
   object-position:center;
   border-radius:0;
-  clip-path:polygon(9% 0,91% 0,100% 14%,95% 69%,82% 84%,50% 100%,18% 84%,5% 69%,0 14%);
-  filter:drop-shadow(-5px 0 12px rgba(36,166,223,.15)) drop-shadow(5px 0 12px rgba(199,40,59,.14)) drop-shadow(0 7px 12px rgba(0,0,0,.38));
+  clip-path:none;
+  filter:drop-shadow(-3px 0 8px rgba(36,166,223,.12)) drop-shadow(3px 0 8px rgba(199,40,59,.11)) drop-shadow(0 5px 9px rgba(0,0,0,.28));
   transition:transform .18s ease,filter .18s ease;
 }
 
 .brand:hover .brand-mark{
-  transform:translateY(-1px) scale(1.02);
-  filter:drop-shadow(-6px 0 14px rgba(36,166,223,.22)) drop-shadow(6px 0 14px rgba(199,40,59,.2)) drop-shadow(0 9px 14px rgba(0,0,0,.42));
+  transform:scale(1.025);
+  filter:drop-shadow(-4px 0 10px rgba(36,166,223,.18)) drop-shadow(4px 0 10px rgba(199,40,59,.16)) drop-shadow(0 6px 10px rgba(0,0,0,.32));
+}
+
+.nav-links{
+  margin-left:0;
 }
 
 .header-founding{
@@ -41,7 +44,7 @@
   flex:0 0 auto;
   align-items:center;
   gap:9px;
-  margin-left:18px;
+  margin-left:14px;
   color:#c34c4c;
   font-size:.62rem;
   font-weight:900;
@@ -59,14 +62,14 @@
 .header-founding b{font-weight:900}
 
 @media(max-width:1080px){
-  .brand{width:102px;min-width:102px}
-  .brand-mark{width:92px;max-height:70px}
+  .brand{width:78px;min-width:78px;margin-right:2px}
+  .brand-mark{width:68px;height:68px}
   .header-founding{gap:6px;margin-left:10px;font-size:.56rem}
   .header-founding span{width:12px}
 }
 
 @media(max-width:720px){
-  .brand{width:86px;min-width:86px}
-  .brand-mark{width:78px;max-height:62px}
+  .brand{width:70px;min-width:70px}
+  .brand-mark{width:60px;height:60px}
   .header-founding{display:none}
 }
