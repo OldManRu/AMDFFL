@@ -1,0 +1,30 @@
+.hof-page{background:radial-gradient(circle at 50% 0,rgba(217,173,79,.065),transparent 25%),#0b0e12}
+.hof-page .page-head{position:relative;overflow:hidden;border-bottom:1px solid rgba(217,173,79,.2);background:radial-gradient(circle at 50% 10%,rgba(217,173,79,.12),transparent 32%),linear-gradient(180deg,#11161c,#0b0e12)}
+.hof-page .page-head:after{content:"HALL OF FAME";position:absolute;right:4%;bottom:-20px;color:rgba(217,173,79,.025);font-size:8rem;font-weight:950;letter-spacing:-.06em;white-space:nowrap;pointer-events:none}
+.hof-intro{max-width:760px}
+.hof-wrap{padding:50px 0 76px}
+.hof-year{position:relative;margin-bottom:58px;padding-top:22px}
+.hof-year:before{content:"";position:absolute;left:0;right:0;top:0;height:1px;background:linear-gradient(90deg,rgba(217,173,79,.5),rgba(217,173,79,.08) 45%,transparent)}
+.year-head{display:flex;align-items:center;gap:14px;margin-bottom:22px}
+.year-badge{display:grid;width:72px;height:72px;place-items:center;border:1px solid #785f2d;border-radius:50%;background:radial-gradient(circle,#2a2111,#14120e 66%,#0d0f12);box-shadow:0 0 0 5px rgba(217,173,79,.035),0 14px 30px rgba(0,0,0,.25)}
+.year-badge small{display:block;color:#907a4d;font-size:.48rem;font-weight:900;letter-spacing:.13em;text-align:center;text-transform:uppercase}
+.year-badge strong{display:block;margin-top:-2px;color:#e0bb62;font-family:Inter,ui-sans-serif,system-ui,sans-serif;font-size:1.35rem;font-weight:900;line-height:1}
+.year-copy span{color:#8d98a3;font-size:.65rem;font-weight:900;letter-spacing:.14em;text-transform:uppercase}
+.year-copy h2{margin:3px 0 0;color:#f0d386;font-size:2rem;line-height:1;text-transform:uppercase;letter-spacing:-.03em}
+.hof-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.hof-card{position:relative;min-height:230px;overflow:hidden;padding:24px;border-color:#4c3f25;background:radial-gradient(circle at 100% 0,rgba(217,173,79,.09),transparent 34%),linear-gradient(155deg,#18191b,#101216);box-shadow:0 18px 42px rgba(0,0,0,.18)}
+.hof-card:before{content:"";position:absolute;inset:0;border:1px solid rgba(255,255,255,.018);border-radius:inherit;pointer-events:none}
+.hof-card:after{content:attr(data-pos);position:absolute;right:12px;bottom:-18px;color:rgba(217,173,79,.045);font-size:6.4rem;font-weight:950;letter-spacing:-.08em;pointer-events:none}
+.inductee-top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.pos{display:grid;min-width:42px;height:32px;padding:0 9px;place-items:center;border:1px solid #6a5429;border-radius:5px;background:#211b10;color:#dfb95d;font-size:.64rem;font-weight:900;letter-spacing:.12em;text-transform:uppercase}
+.inducted{color:#6f7984;font-size:.55rem;font-weight:900;letter-spacing:.11em;text-transform:uppercase}
+.hof-card h3{position:relative;z-index:1;margin:18px 0 15px;font-size:1.65rem;line-height:1.02;text-transform:uppercase;letter-spacing:-.025em}
+.credentials{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;border-top:1px solid #312b20;border-bottom:1px solid #312b20}
+.credential{padding:12px 10px 12px 0}
+.credential+ .credential{padding-left:14px;border-left:1px solid #312b20}
+.credential strong{display:block;color:#f0d386;font-family:Inter,ui-sans-serif,system-ui,sans-serif;font-variant-numeric:tabular-nums;font-size:1.25rem;font-weight:850;line-height:1}
+.credential span{display:block;margin-top:5px;color:#74808b;font-size:.54rem;font-weight:900;letter-spacing:.1em;text-transform:uppercase}
+.hof-source{position:relative;z-index:1;margin:15px 0 0;color:#aab2ba;font-size:.8rem;line-height:1.45}
+.hof-footer{margin-top:18px;padding:16px 18px;border-left:3px solid #b58d3c;background:#121316;color:#8d9298;font-size:.78rem}
+@media(max-width:900px){.hof-grid{grid-template-columns:repeat(2,1fr)}.hof-page .page-head:after{font-size:5.5rem}}
+@media(max-width:620px){.hof-grid{grid-template-columns:1fr}.year-badge{width:62px;height:62px}.year-copy h2{font-size:1.65rem}.hof-card{min-height:210px}.hof-page .page-head:after{font-size:3.6rem}}
