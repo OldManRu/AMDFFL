@@ -1,0 +1,64 @@
+.champions-page{padding-bottom:78px}
+.champions-page .page-head{margin-bottom:0;background:radial-gradient(circle at 78% 20%,rgba(217,173,79,.14),transparent 28%),linear-gradient(180deg,rgba(18,24,31,.9),rgba(10,14,19,.45))}
+.champions-page .page-head p{max-width:720px;font-size:1.04rem;line-height:1.6}
+.champions-content{padding-top:48px}
+.bowl-section{margin-top:0}
+.section-head{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px;align-items:end;margin-bottom:22px}
+.section-head-copy{max-width:760px}
+.section-head h2{margin:.16rem 0 .38rem;font-family:Impact,Haettenschweiler,"Arial Narrow Bold",sans-serif;font-size:clamp(2.8rem,5vw,4.7rem);line-height:.92;text-transform:uppercase;letter-spacing:-.02em}
+.section-head p{margin:0;color:var(--muted);line-height:1.62}
+.bowl-count{display:grid;min-width:112px;padding:12px 16px;border:1px solid #5e4b25;border-radius:8px;background:linear-gradient(180deg,#1d1a12,#111419);text-align:right}
+.bowl-count strong{color:var(--accent);font-family:Impact,Haettenschweiler,"Arial Narrow Bold",sans-serif;font-size:2rem;line-height:1}
+.bowl-count span{margin-top:4px;color:#8a929b;font-size:.58rem;font-weight:900;letter-spacing:.12em;text-transform:uppercase}
+
+.cathedral-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.championship-card{position:relative;overflow:hidden;min-height:230px;padding:24px;border:1px solid #3d3625;border-radius:12px;background:radial-gradient(circle at 92% 0,rgba(217,173,79,.12),transparent 32%),linear-gradient(145deg,#171a1d,#101419);box-shadow:0 16px 38px rgba(0,0,0,.16);transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease}
+.championship-card:hover{transform:translateY(-3px);border-color:#725d2d;box-shadow:0 22px 50px rgba(0,0,0,.26)}
+.championship-card:before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(#f0cc78,#8f6422)}
+.championship-watermark{position:absolute;right:14px;top:7px;color:rgba(217,173,79,.045);font-family:Impact,Haettenschweiler,"Arial Narrow Bold",sans-serif;font-size:6.5rem;line-height:1;pointer-events:none}
+.championship-meta{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:18px}
+.season-badge{display:flex;align-items:baseline;gap:7px}
+.season-badge small{color:#78828d;font-size:.58rem;font-weight:900;letter-spacing:.13em}
+.season-badge strong{color:var(--accent);font-family:Impact,Haettenschweiler,"Arial Narrow Bold",sans-serif;font-size:2rem;line-height:1}
+.bowl-tag{color:#7f7253;font-size:.56rem;font-weight:900;letter-spacing:.12em;text-transform:uppercase}
+.matchup{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1fr) 48px minmax(0,1fr);gap:12px;align-items:center}
+.finalist{min-width:0}
+.finalist.runner{text-align:right}
+.finalist-label{display:block;margin-bottom:6px;color:#737e89;font-size:.55rem;font-weight:900;letter-spacing:.13em;text-transform:uppercase}
+.finalist.champion .finalist-label{color:#d2ad58}
+.finalist-name{display:block;min-height:2.35em;color:#f7f4ec;font-size:1.02rem;font-weight:850;line-height:1.18;text-transform:uppercase}
+.runner .finalist-name{color:#a7b0ba;font-weight:760}
+.finalist-score{display:block;margin-top:10px;font-family:"Arial Narrow","Roboto Condensed","Helvetica Neue",Arial,sans-serif;font-size:2rem;font-weight:600;line-height:1;font-variant-numeric:tabular-nums;letter-spacing:-.035em}
+.runner .finalist-score{color:#9aa3ad}
+.final-marker{display:grid;place-items:center;align-self:stretch;color:#69737e;font-size:.5rem;font-weight:900;letter-spacing:.08em}
+.final-marker:before,.final-marker:after{content:"";display:block;width:1px;height:34px;background:linear-gradient(transparent,#4d4634,transparent)}
+.source-note{margin-top:16px;padding-top:12px;border-top:1px solid #2a2b28;color:#8f8468;font-size:.64rem;line-height:1.4}
+
+.creston-section{margin-top:66px;padding-top:46px;border-top:1px solid var(--line)}
+.creston-section .section-head h2{color:#e0e3e6}
+.creston-section .eyebrow{color:#c86666}
+.creston-wrap{overflow:auto;border:1px solid #45282a;border-radius:12px;background:linear-gradient(180deg,#151216,#0f1114);box-shadow:0 18px 42px rgba(0,0,0,.18)}
+.creston-table{min-width:820px;background:transparent}
+.creston-table th{background:#1b1518;color:#b8a2a5}
+.creston-table tbody tr:hover{background:rgba(143,32,36,.055)}
+.creston-table .season-cell{color:#d0d5da;font-weight:900}
+.bowl-name{color:#d26c70;font-size:.76rem;font-weight:900;letter-spacing:.035em;white-space:nowrap}
+.creston-table .winner{font-weight:850;color:#f0f2f4}
+.creston-table .score{font-family:"Arial Narrow","Roboto Condensed","Helvetica Neue",Arial,sans-serif;font-size:1rem;font-weight:650;font-variant-numeric:tabular-nums}
+.creston-note{display:flex;gap:12px;align-items:center;margin-top:15px;color:#7f8993;font-size:.72rem}
+.creston-note:before{content:"☠";color:#b94c51}
+
+@media(max-width:840px){
+  .cathedral-grid{grid-template-columns:1fr}
+  .section-head{grid-template-columns:1fr}
+  .bowl-count{justify-self:start;text-align:left}
+}
+@media(max-width:560px){
+  .champions-content{padding-top:34px}
+  .championship-card{padding:20px 18px}
+  .matchup{grid-template-columns:minmax(0,1fr) 34px minmax(0,1fr);gap:7px}
+  .finalist-name{font-size:.9rem}
+  .finalist-score{font-size:1.65rem}
+  .final-marker:before,.final-marker:after{height:26px}
+  .championship-watermark{font-size:5.2rem}
+}
