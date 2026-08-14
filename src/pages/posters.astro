@@ -1,18 +1,17 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-const posters=[
-{year:2017,src:'https://amdffl.wordpress.com/wp-content/uploads/2018/11/9587800_orig.jpg'},
-{year:2014,src:'https://amdffl.wordpress.com/wp-content/uploads/2018/11/384695_orig.jpg'},
-{year:2016,src:'https://amdffl.wordpress.com/wp-content/uploads/2018/11/7250491_orig.jpg'},
-{year:2013,src:'https://amdffl.wordpress.com/wp-content/uploads/2018/11/859756_orig.jpg'},
-{year:2011,src:'https://amdffl.wordpress.com/wp-content/uploads/2018/11/2728992_orig.jpg'},
-{year:2010,src:'https://amdffl.wordpress.com/wp-content/uploads/2018/11/1291025_orig.jpg'},
-{year:2009,src:'https://amdffl.wordpress.com/wp-content/uploads/2018/11/4142344_orig.jpg'},
-{year:2008,src:'https://amdffl.wordpress.com/wp-content/uploads/2018/11/380911_orig.jpg'},
-{year:2007,src:'https://amdffl.wordpress.com/wp-content/uploads/2018/11/5658205_orig.jpg'},
-{year:2015,src:'https://amdffl.wordpress.com/wp-content/uploads/2018/11/2015coaster.png'},
-{year:2016,src:'https://amdffl.wordpress.com/wp-content/uploads/2018/11/2016coaster.jpg'},
-{year:2017,src:'https://amdffl.wordpress.com/wp-content/uploads/2018/11/2017coaster.jpg'}
+const posters = [
+  '/images/posters/p1.jpg','/images/posters/p2.jpg','/images/posters/p3.jpg','/images/posters/p4.jpg',
+  '/images/posters/p5.jpg','/images/posters/p6.jpg','/images/posters/p7.jpg','/images/posters/p8.jpg',
+  '/images/posters/p9.jpg','/images/posters/p10.png','/images/posters/p11.jpg','/images/posters/p12.jpg'
 ];
 ---
-<BaseLayout title="Posters | AMD FFL"><main><section class="page-head"><div class="shell"><div class="eyebrow">Artifacts from the archive</div><h1>Championship Posters</h1><p>Twelve original pieces of AMD FFL history, preserved exactly as they were made. The design budget was questionable. The commitment was not.</p></div></section><section class="shell gallery">{posters.map((p,i)=><a class="poster" href={p.src} target="_blank" rel="noreferrer"><img src={p.src} alt={`AMD FFL championship poster ${i+1}`} loading="lazy"/><span>VIEW FULL SIZE</span></a>)}</section></main><style>.page-head{border-bottom:1px solid var(--line);background:radial-gradient(circle at 50% 0,rgba(213,169,70,.11),transparent 35%)}.page-head p{max-width:760px;color:var(--muted);font-size:1.05rem;line-height:1.65}.gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;padding:42px 0 72px;align-items:start}.poster{position:relative;display:block;overflow:hidden;border:1px solid var(--line);border-radius:8px;background:#0d1217;box-shadow:0 16px 40px rgba(0,0,0,.22)}.poster img{display:block;width:100%;height:auto;transition:transform .2s ease}.poster span{position:absolute;right:10px;bottom:10px;padding:7px 9px;border-radius:4px;background:rgba(7,12,17,.88);color:var(--accent);font-size:.62rem;font-weight:900;letter-spacing:.1em;opacity:0;transition:opacity .2s ease}.poster:hover img{transform:scale(1.015)}.poster:hover span{opacity:1}@media(max-width:900px){.gallery{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:560px){.gallery{grid-template-columns:1fr}}</style></BaseLayout>
+<BaseLayout title="Posters | AMD FFL">
+<main>
+<section class="page-head"><div class="shell"><div class="eyebrow">Twenty years of propaganda</div><h1>League Posters</h1><p>The official AMD FFL poster archive. Twelve pieces of league history, preserved exactly as they appeared.</p></div></section>
+<section class="shell poster-wrap"><div class="poster-grid">{posters.map((src,index)=><a class="poster-card" href={src} target="_blank" rel="noreferrer"><img src={src} alt={`AMD FFL poster ${index+1}`} loading="lazy" /><span>POSTER {String(index+1).padStart(2,'0')}</span></a>)}</div><div class="poster-note"><strong>Click any poster to view it full size.</strong><span>No redesigns. No cleanup. The original artwork gets to keep all of its scars.</span></div></section>
+</main>
+<style>
+.page-head{background:radial-gradient(circle at 50% 0,rgba(213,169,70,.12),transparent 34%);border-bottom:1px solid var(--line)}.page-head p{max-width:760px;color:var(--muted);font-size:1.05rem;line-height:1.65}.poster-wrap{padding:42px 0 70px}.poster-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}.poster-card{display:grid;gap:10px;padding:12px;border:1px solid var(--line);border-radius:10px;background:linear-gradient(145deg,#171c22,#101419);color:inherit;text-decoration:none;transition:.18s ease}.poster-card:hover{transform:translateY(-3px);border-color:#6b592e}.poster-card img{width:100%;aspect-ratio:3/4;object-fit:contain;background:#090d11;border-radius:6px}.poster-card span{padding:2px 3px 4px;color:var(--accent);font-size:.68rem;font-weight:900;letter-spacing:.11em}.poster-note{display:flex;gap:14px;align-items:center;margin-top:22px;padding:20px 24px;border-left:3px solid var(--accent);background:#12171c}.poster-note strong{color:var(--accent);text-transform:uppercase}.poster-note span{color:var(--muted)}@media(max-width:900px){.poster-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:600px){.poster-grid{grid-template-columns:1fr}.poster-note{display:block}.poster-note span{display:block;margin-top:7px}}
+</style>
+</BaseLayout>
