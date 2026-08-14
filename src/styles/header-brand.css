@@ -1,5 +1,5 @@
 .site-header{overflow:visible}
-.nav{position:relative;overflow:visible}
+.nav{position:relative;overflow:visible;min-height:104px}
 
 .brand{
   position:relative;
@@ -7,37 +7,45 @@
   display:flex;
   align-items:center;
   justify-content:center;
-  width:88px;
-  min-width:88px;
+  width:126px;
+  min-width:126px;
   padding:0;
-  margin:0 4px 0 0;
+  margin:0 10px 0 0;
   border:0;
   background:transparent;
   box-shadow:none;
+}
+
+.brand:before{
+  content:"";
+  position:absolute;
+  inset:9px 5px;
+  z-index:-1;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(217,173,79,.11),rgba(36,166,223,.035) 45%,transparent 72%);
+  filter:blur(8px);
 }
 
 .brand:after{display:none}
 
 .brand-mark{
   display:block;
-  width:76px;
-  height:76px;
+  width:112px;
+  height:112px;
   object-fit:contain;
   object-position:center;
   border-radius:0;
   clip-path:none;
-  filter:drop-shadow(-3px 0 8px rgba(36,166,223,.12)) drop-shadow(3px 0 8px rgba(199,40,59,.11)) drop-shadow(0 5px 9px rgba(0,0,0,.28));
+  filter:drop-shadow(-4px 0 11px rgba(36,166,223,.16)) drop-shadow(4px 0 11px rgba(199,40,59,.15)) drop-shadow(0 8px 13px rgba(0,0,0,.38));
   transition:transform .18s ease,filter .18s ease;
 }
 
 .brand:hover .brand-mark{
-  transform:scale(1.025);
-  filter:drop-shadow(-4px 0 10px rgba(36,166,223,.18)) drop-shadow(4px 0 10px rgba(199,40,59,.16)) drop-shadow(0 6px 10px rgba(0,0,0,.32));
+  transform:scale(1.04);
+  filter:drop-shadow(-5px 0 14px rgba(36,166,223,.22)) drop-shadow(5px 0 14px rgba(199,40,59,.2)) drop-shadow(0 9px 15px rgba(0,0,0,.42));
 }
 
-.nav-links{
-  margin-left:0;
-}
+.nav-links{margin-left:0}
 
 .header-founding{
   display:flex;
@@ -52,24 +60,20 @@
   white-space:nowrap;
 }
 
-.header-founding span{
-  display:block;
-  width:20px;
-  height:1px;
-  background:#d5a946;
-}
-
+.header-founding span{display:block;width:20px;height:1px;background:#d5a946}
 .header-founding b{font-weight:900}
 
 @media(max-width:1080px){
-  .brand{width:78px;min-width:78px;margin-right:2px}
-  .brand-mark{width:68px;height:68px}
+  .nav{min-height:92px}
+  .brand{width:106px;min-width:106px;margin-right:5px}
+  .brand-mark{width:94px;height:94px}
   .header-founding{gap:6px;margin-left:10px;font-size:.56rem}
   .header-founding span{width:12px}
 }
 
 @media(max-width:720px){
-  .brand{width:70px;min-width:70px}
-  .brand-mark{width:60px;height:60px}
+  .nav{min-height:76px}
+  .brand{width:86px;min-width:86px}
+  .brand-mark{width:78px;height:78px}
   .header-founding{display:none}
 }
