@@ -16,6 +16,7 @@ const recent = championships.slice(0,5);
   <div class="hero-noise"></div>
   <div class="shell hero-grid">
     <div class="hero-copy">
+      <img src="/amdffl-mark.svg" alt="AMD Fantasy Football League" style="width:86px;height:auto;margin:0 0 18px;filter:drop-shadow(0 10px 22px rgba(0,0,0,.35));" />
       <div class="founding"><span></span><b>EST. 2006</b><span></span></div>
       <div class="kicker">20 SEASONS. COUNTLESS MEMORIES. ONE CATHEDRAL BOWL.</div>
       <h1>WELCOME TO<br/><em>THE CATHEDRAL.</em></h1>
@@ -64,7 +65,7 @@ const recent = championships.slice(0,5);
     <div class="panel recent"><div class="panel-top"><span class="panel-icon">★</span><h3>RECENT CHAMPIONS</h3></div>{recent.map((c:any)=><div class="result"><span>S{c.season}</span><strong>{teamName(c.winnerTeamId)}</strong><small>{c.sourceNote ? 'Score flagged in archive' : `${c.winnerScore} – ${c.loserScore}`}</small></div>)}<a href="/champions">VIEW ALL CHAMPIONS →</a></div>
     <div class="panel record"><div class="panel-top"><span class="panel-icon">#</span><h3>RECORD BOOK</h3></div><div class="big-number">20+</div><span>YEARS OF LEAGUE HISTORY</span><p>Wins, losses, streaks, awards, heartbreak and the statistical evidence required for arguments nobody intends to let go.</p><a href="/records">EXPLORE RECORDS →</a></div>
     <div class="panel traditions"><div class="panel-top"><span class="panel-icon">⚑</span><h3>LEAGUE TRADITIONS</h3></div><ul><li>Hard-fought battles</li><li>Unmatched trash talk</li><li>Lifelong friendships</li><li>The pursuit of glory</li></ul><a href="/franchises">OUR STORY →</a></div>
-    <aside class="panel shame"><div class="panel-top"><span class="panel-icon">☠</span><h3>THE HALL OF SHAME</h3></div><strong>Records nobody was trying to set.</strong><p>Championship droughts, title-game heartbreak, playoff futility and other completely objective forms of public accountability.</p><a href="/records">STATS DON'T LIE →</a></aside>
+    <aside class="panel shame" style="grid-column:1 / -1;"><div class="panel-top"><span class="panel-icon">☠</span><h3>THE HALL OF SHAME</h3></div><strong>Records nobody was trying to set.</strong><p>Championship droughts, title-game heartbreak, playoff futility and other completely objective forms of public accountability.</p><a href="/records">STATS DON'T LIE →</a></aside>
   </div>
 </section>
 
