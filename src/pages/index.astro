@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import '../styles/home.css';
+import '../styles/home-trophy.css';
 import franchises from '../../data/franchises.json';
 import owners from '../../data/owners.json';
 import { teams } from '../lib/catalog';
@@ -27,13 +28,10 @@ const recent = championships.slice(0,5);
       <div class="hero-motto">RESPECT THE PAST <i>★</i> COMPETE IN THE PRESENT <i>★</i> BUILD THE LEGACY</div>
     </div>
 
-    <div class="trophy-stage" aria-label="Cathedral Bowl trophy illustration">
+    <div class="trophy-stage" aria-label="Golden Gale championship trophy">
       <div class="spotlight"></div>
-      <div class="monument">
-        <div class="football"><div class="laces">|||||</div></div>
-        <div class="spire spire-left"></div><div class="spire spire-right"></div>
-        <div class="cathedral"><div class="arch"></div><div class="arch-door"></div></div>
-        <div class="trophy-plinth"><small>THE</small><strong>CATHEDRAL BOWL</strong><span>AMD FFL CHAMPION</span></div>
+      <div class="golden-gale-wrap">
+        <img class="golden-gale" src="/images/goldengale.webp" alt="Golden Gale championship trophy" />
       </div>
       <div class="stage-caption">THE ONE EVERYBODY WANTS</div>
     </div>
