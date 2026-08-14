@@ -1,6 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import '../styles/awards.css';
 import { awards } from '../lib/awards';
+import { teams } from '../lib/teams';
 
 const order = [
   'league_mvp',
@@ -18,10 +20,20 @@ const labels:any = {
   defensive_player_of_the_year:'Defensive Player of the Year'
 };
 
+const descriptions:any = {
+  league_mvp:'The season’s standard-bearer. One name gets the top line.',
+  offensive_rookie:'First-year offensive players who arrived ready to cause problems.',
+  defensive_rookie:'First-year defenders who made themselves impossible to ignore.',
+  manager_of_the_year:'For the person who made enough correct decisions to deserve documentation.',
+  defensive_player_of_the_year:'The defenders who wrecked plans, ruined Sundays, and earned the hardware.'
+};
+
 const grouped = awards.reduce((acc:any,a:any)=>{
   (acc[a.category] ??= []).push(a);
   return acc;
 },{});
+
+const teamName = (id:string) => teams.find((team:any)=>team.teamId===id)?.name ?? id.replaceAll('-',' ');
 
 const groups = order
   .filter((category)=>grouped[category]?.length)
@@ -30,4 +42,18 @@ const groups = order
     items: grouped[category].sort((a:any,b:any)=>b.season-a.season)
   }));
 ---
-<BaseLayout title="Awards | AMD FFL"><main><section class="page-head"><div class="shell"><div class="eyebrow">League honors</div><h1>Awards</h1><p class="muted">Twenty seasons of MVPs, rookies, defenders, and managers who managed to look competent for at least one year.</p></div></section><section class="shell award-groups">{groups.map((g:any)=><section class="award-group"><h2>{labels[g.category]}</h2><div class="award-grid">{g.items.map((a:any)=><article class="card award-card"><span class="eyebrow">Season {a.season}</span><strong>{a.player??a.raw}</strong>{a.teamId&&<small>{a.teamId.replaceAll('-',' ')}</small>}</article>)}</div></section>)}</section></main><style>.award-groups{padding:38px 0 60px}.award-group{margin-bottom:46px}.award-group h2{text-transform:uppercase;font-size:1.8rem}.award-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.award-card strong{display:block;margin:8px 0;text-transform:capitalize}.award-card small{color:var(--muted);text-transform:capitalize}@media(max-width:700px){.award-grid{grid-template-columns:1fr}}</style></BaseLayout>
+<BaseLayout title="Awards | AMD FFL"><main class="awards-page">
+<section class="page-head"><div class="shell"><div class="eyebrow">League honors</div><h1>Awards</h1><p class="muted">Twenty seasons of MVPs, rookies, defenders, and managers who managed to look competent for at least one year.</p></div></section>
+<section class="shell award-groups">
+{groups.map((g:any)=><section class="award-group" data-category={g.category}>
+  <div class="award-group-head"><div class="award-seal" aria-hidden="true"></div><div><h2>{labels[g.category]}</h2><p>{descriptions[g.category]}</p></div></div>
+  <div class="award-grid">
+    {g.items.map((a:any,index:number)=><article class:list={['card','award-card',{latest:index===0}]} data-season={`S${a.season}`}>
+      <span class="season">Season {a.season}</span>
+      <strong>{a.player??a.raw}</strong>
+      {a.teamId&&<small>{teamName(a.teamId)}</small>}
+    </article>)}
+  </div>
+</section>)}
+</section>
+</main></BaseLayout>
