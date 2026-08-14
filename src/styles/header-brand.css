@@ -1,0 +1,5 @@
+.brand{min-width:auto;display:flex;align-items:center}
+.brand-mark{width:104px;height:auto;max-height:72px;object-fit:contain;object-position:center;border-radius:0;filter:drop-shadow(-7px 0 16px rgba(36,166,223,.18)) drop-shadow(7px 0 16px rgba(199,40,59,.16));transition:transform .18s ease,filter .18s ease}
+.brand:hover .brand-mark{transform:translateY(-1px) scale(1.025);filter:drop-shadow(-8px 0 18px rgba(36,166,223,.28)) drop-shadow(8px 0 18px rgba(199,40,59,.25))}
+@media(max-width:1080px){.brand-mark{width:90px;height:auto;max-height:64px}}
+@media(max-width:720px){.brand-mark{width:78px;height:auto;max-height:58px}}
