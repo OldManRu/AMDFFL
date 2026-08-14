@@ -2,10 +2,9 @@ import franchises from '../../data/franchises.json';
 import { teams } from './teams';
 
 const sourceMods=import.meta.glob('../../data/source/franchises/**/*.json',{eager:true});
-const sourceRootMods=import.meta.glob('../../data/source/franchises/*.json',{eager:true});
 const bowlMods=import.meta.glob('../../data/championships/*.json',{eager:true});
 const bowls=Object.values(bowlMods).flatMap((m:any)=>m.default??m);
-const sources=[...Object.values(sourceRootMods),...Object.values(sourceMods)];
+const sources=Object.values(sourceMods);
 
 export function franchisePaths(){return franchises.map((f:any)=>({params:{id:String(f.franchiseId)},props:{franchise:f}}));}
 
