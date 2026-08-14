@@ -48,6 +48,11 @@
 .days-counter{position:relative;z-index:1;display:block;margin:10px 0 6px;color:#e6e8eb;font-family:Inter,ui-sans-serif,system-ui,sans-serif;font-size:clamp(2rem,3.5vw,3rem);font-variant-numeric:tabular-nums;font-weight:850;line-height:1;letter-spacing:-.05em}
 .days-since-card h3{position:relative;z-index:1;margin:15px 0 5px;font-size:.95rem;text-transform:uppercase}
 .days-since-card p{position:relative;z-index:1;margin:0;color:#8f777a;font-size:.76rem}
+.days-since-card.reigning{border-color:#2c77a8;background:radial-gradient(circle at 100% 0,rgba(36,166,223,.22),transparent 46%),linear-gradient(160deg,#10202c,#0d1318);box-shadow:0 0 0 1px rgba(36,166,223,.08),0 16px 34px rgba(0,0,0,.16)}
+.days-since-card.reigning:after{border-color:rgba(36,166,223,.18)}
+.days-since-card.reigning .days-label{color:#5cc2ef}
+.days-since-card.reigning .days-counter{color:#8fdcff}
+.days-since-card.reigning p{color:#8eb6ca}
 .days-note{margin:14px 0 0;color:#66595b;font-size:.7rem;font-style:italic}
 .shame-zone{padding:58px 0 64px;background:radial-gradient(circle at 50% 0,rgba(173,38,53,.09),transparent 35%),#0b0d10;border-top:1px solid #4b242a}
 .shame-zone .section-title h2{color:#e7e9eb}
