@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import '../styles/posters.css';
 const posters = [
   '/images/posters/p1.jpg','/images/posters/p2.jpg','/images/posters/p3.jpg','/images/posters/p4.jpg',
   '/images/posters/p5.jpg','/images/posters/p6.jpg','/images/posters/p7.jpg','/images/posters/p8.jpg',
@@ -7,9 +8,9 @@ const posters = [
 ];
 ---
 <BaseLayout title="Posters | AMD FFL">
-<main>
+<main class="posters-page">
 <section class="page-head"><div class="shell"><div class="eyebrow">Twenty years of propaganda</div><h1>League Posters</h1><p>The official AMD FFL poster archive. Twelve pieces of league history, preserved exactly as they appeared.</p></div></section>
-<section class="shell poster-wrap"><div class="poster-grid">{posters.map((src,index)=><button class="poster-card" type="button" data-poster={src} data-title={`POSTER ${String(index+1).padStart(2,'0')}`}><img src={src} alt={`AMD FFL poster ${index+1}`} loading="lazy" /><span>POSTER {String(index+1).padStart(2,'0')}</span></button>)}</div><div class="poster-note"><strong>Click any poster to view it full size.</strong><span>No redesigns. No cleanup. The original artwork gets to keep all of its scars.</span></div></section>
+<section class="shell poster-wrap"><div class="poster-grid">{posters.map((src,index)=><button class="poster-card" type="button" data-poster={src} data-title={`POSTER ${String(index+1).padStart(2,'0')}`}><div class="poster-image-wrap"><img src={src} alt={`AMD FFL poster ${index+1}`} loading="lazy" /></div><div class="poster-meta"><span>POSTER {String(index+1).padStart(2,'0')}</span><small>Original artwork</small></div></button>)}</div><div class="poster-note"><strong>Click any poster to view it full size.</strong><span>No redesigns. No cleanup. The original artwork gets to keep all of its scars.</span></div></section>
 <dialog id="poster-modal" class="poster-modal"><button class="modal-close" type="button" aria-label="Close poster">×</button><div class="modal-frame"><img id="modal-image" src="" alt="" /><div id="modal-title" class="modal-title"></div></div></dialog>
 <script>
 const modal=document.querySelector('#poster-modal');
@@ -22,7 +23,4 @@ modal.addEventListener('click',(event)=>{if(event.target===modal)modal.close();}
 document.addEventListener('keydown',(event)=>{if(event.key==='Escape'&&modal.open)modal.close();});
 </script>
 </main>
-<style>
-.page-head{background:radial-gradient(circle at 50% 0,rgba(213,169,70,.12),transparent 34%);border-bottom:1px solid var(--line)}.page-head p{max-width:760px;color:var(--muted);font-size:1.05rem;line-height:1.65}.poster-wrap{padding:42px 0 70px}.poster-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}.poster-card{display:grid;gap:10px;padding:12px;border:1px solid var(--line);border-radius:10px;background:linear-gradient(145deg,#171c22,#101419);color:inherit;text-align:left;cursor:pointer;transition:.18s ease}.poster-card:hover{transform:translateY(-3px);border-color:#6b592e}.poster-card img{width:100%;aspect-ratio:3/4;object-fit:contain;background:#090d11;border-radius:6px}.poster-card span{padding:2px 3px 4px;color:var(--accent);font-size:.68rem;font-weight:900;letter-spacing:.11em}.poster-note{display:flex;gap:14px;align-items:center;margin-top:22px;padding:20px 24px;border-left:3px solid var(--accent);background:#12171c}.poster-note strong{color:var(--accent);text-transform:uppercase}.poster-note span{color:var(--muted)}.poster-modal{width:min(94vw,1100px);max-width:none;padding:0;border:1px solid #3b444e;border-radius:12px;background:#080c10;color:#fff;box-shadow:0 30px 90px rgba(0,0,0,.75)}.poster-modal::backdrop{background:rgba(0,0,0,.82);backdrop-filter:blur(3px)}.modal-frame{display:grid;place-items:center;padding:28px}.modal-frame img{display:block;max-width:100%;max-height:82vh;object-fit:contain}.modal-title{margin-top:14px;color:var(--accent);font-size:.75rem;font-weight:900;letter-spacing:.12em}.modal-close{position:absolute;top:12px;right:14px;z-index:2;width:42px;height:42px;border:1px solid #46515c;border-radius:50%;background:rgba(10,15,20,.88);color:#fff;font-size:1.8rem;line-height:1;cursor:pointer}.modal-close:hover{border-color:var(--accent);color:var(--accent)}@media(max-width:900px){.poster-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:600px){.poster-grid{grid-template-columns:1fr}.poster-note{display:block}.poster-note span{display:block;margin-top:7px}.modal-frame{padding:18px}.modal-frame img{max-height:78vh}}
-</style>
 </BaseLayout>
