@@ -1,0 +1,39 @@
+.trophy-stage .golden-gale-wrap{
+  position:relative;
+  z-index:2;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:100%;
+  min-height:330px;
+}
+
+.trophy-stage .golden-gale{
+  display:block;
+  width:min(250px,92%);
+  max-height:330px;
+  object-fit:contain;
+  object-position:center;
+  filter:drop-shadow(0 24px 28px rgba(0,0,0,.62)) drop-shadow(0 0 18px rgba(217,173,79,.14));
+}
+
+.trophy-stage .spotlight{
+  width:350px;
+  height:350px;
+  background:radial-gradient(circle,rgba(231,191,94,.28),rgba(231,191,94,.075) 42%,transparent 72%);
+}
+
+.trophy-stage .stage-caption{
+  position:relative;
+  z-index:3;
+  margin-top:2px;
+}
+
+@media(max-width:1020px){
+  .trophy-stage .golden-gale{width:min(235px,88%);max-height:315px}
+}
+
+@media(max-width:720px){
+  .trophy-stage .golden-gale-wrap{min-height:300px}
+  .trophy-stage .golden-gale{width:min(220px,82%);max-height:295px}
+}
