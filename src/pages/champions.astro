@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { teams } from '../lib/catalog';
 import crestonGames from '../../data/creston-bowl.json';
+import '../styles/champions.css';
 
 const modules = import.meta.glob('../../data/championships/*.json', { eager: true, import: 'default' });
 const cathedralGames = Object.values(modules).flat().sort((a: any, b: any) => b.season - a.season);
@@ -19,49 +20,72 @@ const teamName = (id: string) => teams.find((team) => team.teamId === id)?.name 
     </header>
 
     <div class="shell champions-content">
-      <section class="bowl-section">
-        <div class="section-head"><div class="eyebrow">The one everybody wants</div><h2>Cathedral Bowl</h2><p class="muted">League championship history from Super Bowl I through the modern Cathedral Bowl era.</p></div>
-        <div class="table-wrap">
-          <table>
-            <thead><tr><th>Season</th><th>Champion</th><th>Score</th><th>Runner-up</th><th>Score</th></tr></thead>
-            <tbody>
-              {cathedralGames.map((game: any) => (
-                <tr>
-                  <td>{game.season}</td>
-                  <td><strong>{teamName(game.winnerTeamId)}</strong></td>
-                  <td>{game.winnerScore}</td>
-                  <td>{teamName(game.loserTeamId)}</td>
-                  <td>{game.loserScore}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+      <section class="bowl-section cathedral-section">
+        <div class="section-head">
+          <div class="section-head-copy">
+            <div class="eyebrow">The one everybody wants</div>
+            <h2>Cathedral Bowl</h2>
+            <p>League championship history from Super Bowl I through the modern Cathedral Bowl era. Twenty seasons, twenty final scores, and exactly twenty chances to become unbearable for an entire offseason.</p>
+          </div>
+          <div class="bowl-count"><strong>{cathedralGames.length}</strong><span>Title Games</span></div>
+        </div>
+
+        <div class="cathedral-grid">
+          {cathedralGames.map((game: any) => (
+            <article class="championship-card">
+              <div class="championship-watermark">S{game.season}</div>
+              <div class="championship-meta">
+                <div class="season-badge"><small>SEASON</small><strong>{game.season}</strong></div>
+                <div class="bowl-tag">Cathedral Bowl Final</div>
+              </div>
+              <div class="matchup">
+                <div class="finalist champion">
+                  <span class="finalist-label">Champion</span>
+                  <strong class="finalist-name">{teamName(game.winnerTeamId)}</strong>
+                  <b class="finalist-score">{game.winnerScore}</b>
+                </div>
+                <div class="final-marker">FINAL</div>
+                <div class="finalist runner">
+                  <span class="finalist-label">Runner-up</span>
+                  <strong class="finalist-name">{teamName(game.loserTeamId)}</strong>
+                  <b class="finalist-score">{game.loserScore}</b>
+                </div>
+              </div>
+              {game.sourceNote && <div class="source-note">Archive note: {game.sourceNote}</div>}
+            </article>
+          ))}
         </div>
       </section>
 
       <section class="bowl-section creston-section">
-        <div class="section-head"><div class="eyebrow">Records nobody puts on the refrigerator</div><h2>Creston Bowl</h2><p class="muted">Born as the Toilet Bowl, promoted to the JaMarcus Russell Bowl, and eventually renamed for the franchise that made losing an art form.</p></div>
-        <div class="table-wrap">
-          <table>
-            <thead><tr><th>Season</th><th>Bowl</th><th>Champion</th><th>Score</th><th>Runner-up</th><th>Score</th></tr></thead>
+        <div class="section-head">
+          <div class="section-head-copy">
+            <div class="eyebrow">Records nobody puts on the refrigerator</div>
+            <h2>Creston Bowl</h2>
+            <p>Born as the Toilet Bowl, promoted to the JaMarcus Russell Bowl, and eventually renamed for the franchise that made losing an art form.</p>
+          </div>
+          <div class="bowl-count"><strong>{creston.length}</strong><span>Dubious Finals</span></div>
+        </div>
+
+        <div class="creston-wrap">
+          <table class="creston-table">
+            <thead><tr><th>Season</th><th>Bowl</th><th>Winner</th><th>Score</th><th>Runner-up</th><th>Score</th></tr></thead>
             <tbody>
               {creston.map((game: any) => (
                 <tr>
-                  <td>{game.season}</td>
+                  <td class="season-cell">S{game.season}</td>
                   <td class="bowl-name">{game.name}</td>
-                  <td><strong>{teamName(game.winnerTeamId)}</strong></td>
-                  <td>{game.winnerScore}</td>
+                  <td class="winner">{teamName(game.winnerTeamId)}</td>
+                  <td class="score">{game.winnerScore}</td>
                   <td>{teamName(game.loserTeamId)}</td>
-                  <td>{game.loserScore}</td>
+                  <td class="score">{game.loserScore}</td>
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
+        <div class="creston-note">Some trophies build legacies. This one builds character.</div>
       </section>
     </div>
   </main>
-  <style>
-    .champions-page{padding-bottom:70px}.page-head{margin-bottom:38px}.bowl-section{margin-top:34px}.section-head{margin-bottom:18px}.section-head h2{margin:.2rem 0 .45rem;font-size:2rem;text-transform:uppercase}.section-head p{max-width:760px;line-height:1.6}.creston-section{margin-top:58px;padding-top:42px;border-top:1px solid var(--line)}.bowl-name{color:var(--accent);font-size:.78rem;font-weight:900;letter-spacing:.04em;white-space:nowrap}@media(max-width:700px){.table-wrap{overflow-x:auto}table{min-width:720px}}
-  </style>
 </BaseLayout>
