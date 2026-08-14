@@ -1,0 +1,70 @@
+/* Conservative cross-site finishing pass. */
+
+:focus-visible{
+  outline:2px solid var(--accent-hi);
+  outline-offset:3px;
+}
+
+button,
+select,
+input,
+a{
+  -webkit-tap-highlight-color:transparent;
+}
+
+button{cursor:pointer}
+
+.nav-links a.active,
+.nav-links a[aria-current="page"]{
+  color:#fff;
+  background:rgba(217,173,79,.045);
+}
+
+.nav-links a.active:after,
+.nav-links a[aria-current="page"]:after{
+  transform:scaleX(1);
+}
+
+.page-head p{
+  max-width:780px;
+  line-height:1.65;
+}
+
+img{
+  max-width:100%;
+}
+
+select:focus-visible,
+input:focus-visible,
+button:focus-visible{
+  border-color:var(--accent);
+}
+
+.footer-inner strong{
+  text-wrap:balance;
+}
+
+@media(max-width:980px){
+  .nav-links{
+    row-gap:3px;
+  }
+}
+
+@media(max-width:720px){
+  .footer{
+    padding-bottom:34px;
+  }
+  .footer-inner{
+    line-height:1.55;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{
+    scroll-behavior:auto!important;
+    transition-duration:.001ms!important;
+    animation-duration:.001ms!important;
+    animation-iteration-count:1!important;
+  }
+}
