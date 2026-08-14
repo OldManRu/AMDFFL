@@ -16,4 +16,12 @@ const path = Astro.url.pathname;
 <slot />
 <footer class="footer"><div class="shell footer-inner">★ <strong>ONE LEAGUE. ONE TROPHY. ETERNAL BRAGGING RIGHTS.</strong> ★</div><div class="shell footer-meta">AMD FFL historical archive · Serious records, unserious people.</div></footer>
 {path==='/pro-bowls' && <script is:inline src="/scripts/pro-bowls-normalized.js"></script>}
+<style is:global>
+  .brand{display:flex;align-items:center;gap:10px;min-width:max-content}
+  .brand-mark{width:48px;height:56px;object-fit:contain;filter:drop-shadow(0 8px 14px rgba(0,0,0,.32))}
+  .brand-wordmark{display:grid;gap:1px;line-height:1}
+  .brand-wordmark b{color:var(--accent);font-family:Impact,Haettenschweiler,"Arial Narrow Bold",sans-serif;font-size:1.45rem;letter-spacing:.055em}
+  .brand-wordmark small{color:#aeb7c1;font-size:.54rem;font-weight:900;letter-spacing:.12em;text-transform:uppercase}
+  @media(max-width:720px){.brand-mark{width:42px;height:49px}.brand-wordmark small{display:none}}
+</style>
 </body></html>
