@@ -1,0 +1,13 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const posters=[
+'https://amdffl.wordpress.com/wp-content/uploads/2018/11/9587800_orig.jpg',
+'https://amdffl.wordpress.com/wp-content/uploads/2018/11/384695_orig.jpg',
+'https://amdffl.wordpress.com/wp-content/uploads/2018/11/7250491_orig.jpg',
+'https://amdffl.wordpress.com/wp-content/uploads/2018/11/2728992_orig.jpg',
+'https://amdffl.wordpress.com/wp-content/uploads/2018/11/1291025_orig.jpg',
+'https://amdffl.wordpress.com/wp-content/uploads/2018/11/4142344_orig.jpg',
+'https://amdffl.wordpress.com/wp-content/uploads/2018/11/5658205_orig.jpg'
+];
+---
+<BaseLayout title="Posters | AMD FFL"><main><section class="page-head"><div class="shell"><div class="eyebrow">Artifacts from the archive</div><h1>Posters</h1><p>Before social graphics were a button click away, somebody actually had to make this stuff. The surviving AMD FFL poster archive, preserved in all its glory.</p></div></section><section class="shell gallery">{posters.map((src,i)=><a class="poster" href={src} target="_blank" rel="noreferrer"><img src={src} alt={`AMD FFL historical poster ${i+1}`} loading="lazy"/><span>VIEW FULL SIZE</span></a>)}</section></main><style>.page-head{border-bottom:1px solid var(--line);background:radial-gradient(circle at 50% 0,rgba(213,169,70,.11),transparent 35%)}.page-head p{max-width:760px;color:var(--muted);font-size:1.05rem;line-height:1.65}.gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;padding:42px 0 72px}.poster{position:relative;display:block;overflow:hidden;border:1px solid var(--line);border-radius:8px;background:#0d1217;box-shadow:0 16px 40px rgba(0,0,0,.22)}.poster img{display:block;width:100%;height:auto;transition:transform .2s ease}.poster span{position:absolute;right:10px;bottom:10px;padding:7px 9px;border-radius:4px;background:rgba(7,12,17,.88);color:var(--accent);font-size:.62rem;font-weight:900;letter-spacing:.1em;opacity:0;transition:opacity .2s ease}.poster:hover img{transform:scale(1.015)}.poster:hover span{opacity:1}@media(max-width:900px){.gallery{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:560px){.gallery{grid-template-columns:1fr}}</style></BaseLayout>
