@@ -1,0 +1,8 @@
+[
+  {"year":2026,"positionGroup":"QB","player":"Tom Brady","points":5509.3,"seasons":17,"source":"2 MVPs, 4 ProBowls"},
+  {"year":2026,"positionGroup":"RB","player":"LeSean McCoy","points":2485.3,"seasons":12,"source":"3 Rings, ProBowl"},
+  {"year":2026,"positionGroup":"WR","player":"AJ Green","points":2158.2,"seasons":12,"source":"3 ProBowls"},
+  {"year":2026,"positionGroup":"LB","player":"D'Qwell Jackson","points":1847.1,"seasons":11,"source":"3 ProBowls"},
+  {"year":2026,"positionGroup":"DB","player":"Malcolm Jenkins","points":2244.45,"seasons":13,"source":"Ring, ProBowl"},
+  {"year":2026,"positionGroup":"MISC","player":"JJ Watt","points":1825.78,"seasons":12,"source":"4 Rings, 6 ProBowls"}
+]
