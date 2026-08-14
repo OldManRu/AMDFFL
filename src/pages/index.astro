@@ -12,6 +12,10 @@ const recent = championships.slice(0,5);
 ---
 <BaseLayout title="AMD FFL | Welcome to the Cathedral">
 <main class="home">
+<section class="brand-marquee" aria-label="AMD Fantasy Football League">
+  <div class="brand-marquee-image" role="img" aria-label="AMD Fantasy Football League shield under stadium lights"></div>
+  <div class="brand-marquee-fade"></div>
+</section>
 <section class="home-hero">
   <div class="hero-noise"></div>
   <div class="shell hero-grid">
@@ -30,47 +34,21 @@ const recent = championships.slice(0,5);
         <div class="football"><div class="laces">|||||</div></div>
         <div class="spire spire-left"></div><div class="spire spire-right"></div>
         <div class="cathedral"><div class="arch"></div><div class="arch-door"></div></div>
-        <div class="trophy-plinth">
-          <small>THE</small>
-          <strong>CATHEDRAL BOWL</strong>
-          <span>AMD FFL CHAMPION</span>
-        </div>
+        <div class="trophy-plinth"><small>THE</small><strong>CATHEDRAL BOWL</strong><span>AMD FFL CHAMPION</span></div>
       </div>
       <div class="stage-caption">THE ONE EVERYBODY WANTS</div>
     </div>
 
     <aside class="champ-card">
-      <div class="panel-label">★ REIGNING CHAMPION ★</div>
-      <div class="champ-season">SEASON 20 · CATHEDRAL BOWL XX</div>
-      <div class="champ-mark">XX</div>
-      <h2>{current ? teamName(current.winnerTeamId) : 'Season 20 Champion'}</h2>
-      <span>ETCHED INTO THE ARCHIVE</span>
+      <div class="panel-label">★ REIGNING CHAMPION ★</div><div class="champ-season">SEASON 20 · CATHEDRAL BOWL XX</div><div class="champ-mark">XX</div>
+      <h2>{current ? teamName(current.winnerTeamId) : 'Season 20 Champion'}</h2><span>ETCHED INTO THE ARCHIVE</span>
       {current && <div class="champ-score"><div><b>{current.winnerScore}</b><small>{teamName(current.winnerTeamId)}</small></div><em>FINAL</em><div class="runner"><b>{current.loserScore}</b><small>{teamName(current.loserTeamId)}</small></div></div>}
       <a class="btn red" href="/champions">View Championship</a>
     </aside>
   </div>
 </section>
-
-<section class="shell stat-ribbon" aria-label="League archive statistics">
-  <div><b>20</b><span>SEASONS</span><small>Two decades of bad decisions</small></div>
-  <div><b>{franchises.length}</b><span>FRANCHISES</span><small>Still answering the bell</small></div>
-  <div><b>{teams.length}</b><span>TEAM IDENTITIES</span><small>Rebrands happened</small></div>
-  <div><b>{owners.length}</b><span>OWNERS</span><small>Past and present</small></div>
-</section>
-
-<section class="shell home-section">
-  <div class="section-intro"><div class="eyebrow">The receipts live here</div><h2>Twenty years of evidence.</h2><p>Championships, records, rivalries, awards, questionable decisions, and enough statistical ammunition to keep arguments alive indefinitely.</p></div>
-  <div class="dashboard">
-    <div class="panel recent"><div class="panel-top"><span class="panel-icon">★</span><h3>RECENT CHAMPIONS</h3></div>{recent.map((c:any)=><div class="result"><span>S{c.season}</span><strong>{teamName(c.winnerTeamId)}</strong><small>{c.sourceNote ? 'Score flagged in archive' : `${c.winnerScore} – ${c.loserScore}`}</small></div>)}<a href="/champions">VIEW ALL CHAMPIONS →</a></div>
-    <div class="panel record"><div class="panel-top"><span class="panel-icon">#</span><h3>RECORD BOOK</h3></div><div class="big-number">20+</div><span>YEARS OF LEAGUE HISTORY</span><p>Wins, losses, streaks, awards, heartbreak and the statistical evidence required for arguments nobody intends to let go.</p><a href="/records">EXPLORE RECORDS →</a></div>
-    <div class="panel traditions"><div class="panel-top"><span class="panel-icon">⚑</span><h3>LEAGUE TRADITIONS</h3></div><ul><li>Hard-fought battles</li><li>Unmatched trash talk</li><li>Lifelong friendships</li><li>The pursuit of glory</li></ul><a href="/franchises">OUR STORY →</a></div>
-    <aside class="panel shame" style="grid-column:1 / -1;"><div class="panel-top"><span class="panel-icon">☠</span><h3>THE HALL OF SHAME</h3></div><strong>Records nobody was trying to set.</strong><p>Championship droughts, title-game heartbreak, playoff futility and other completely objective forms of public accountability.</p><a href="/records">STATS DON'T LIE →</a></aside>
-  </div>
-</section>
-
-<section class="shell archive-wrap">
-  <div class="section-intro compact"><div class="eyebrow">The crown jewel</div><h2>Cathedral Bowl archive</h2><p>Every champion has a story. Every runner-up has an excuse.</p></div>
-  <div class="archive-strip"><div><span class="archive-kicker">2006 → PRESENT</span><h3>20 YEARS OF<br/>CATHEDRAL BOWLS</h3><p>Relive every championship battle in the archive.</p><a href="/champions">VIEW ALL →</a></div>{recent.map((c:any)=><a class="archive-tile" href="/champions"><span>S{c.season}</span><b>{teamName(c.winnerTeamId)}</b><small>CATHEDRAL BOWL CHAMPION</small></a>)}</div>
-</section>
+<section class="shell stat-ribbon" aria-label="League archive statistics"><div><b>20</b><span>SEASONS</span><small>Two decades of bad decisions</small></div><div><b>{franchises.length}</b><span>FRANCHISES</span><small>Still answering the bell</small></div><div><b>{teams.length}</b><span>TEAM IDENTITIES</span><small>Rebrands happened</small></div><div><b>{owners.length}</b><span>OWNERS</span><small>Past and present</small></div></section>
+<section class="shell home-section"><div class="section-intro"><div class="eyebrow">The receipts live here</div><h2>Twenty years of evidence.</h2><p>Championships, records, rivalries, awards, questionable decisions, and enough statistical ammunition to keep arguments alive indefinitely.</p></div><div class="dashboard"><div class="panel recent"><div class="panel-top"><span class="panel-icon">★</span><h3>RECENT CHAMPIONS</h3></div>{recent.map((c:any)=><div class="result"><span>S{c.season}</span><strong>{teamName(c.winnerTeamId)}</strong><small>{c.sourceNote ? 'Score flagged in archive' : `${c.winnerScore} – ${c.loserScore}`}</small></div>)}<a href="/champions">VIEW ALL CHAMPIONS →</a></div><div class="panel record"><div class="panel-top"><span class="panel-icon">#</span><h3>RECORD BOOK</h3></div><div class="big-number">20+</div><span>YEARS OF LEAGUE HISTORY</span><p>Wins, losses, streaks, awards, heartbreak and the statistical evidence required for arguments nobody intends to let go.</p><a href="/records">EXPLORE RECORDS →</a></div><div class="panel traditions"><div class="panel-top"><span class="panel-icon">⚑</span><h3>LEAGUE TRADITIONS</h3></div><ul><li>Hard-fought battles</li><li>Unmatched trash talk</li><li>Lifelong friendships</li><li>The pursuit of glory</li></ul><a href="/franchises">OUR STORY →</a></div><aside class="panel shame" style="grid-column:1 / -1;"><div class="panel-top"><span class="panel-icon">☠</span><h3>THE HALL OF SHAME</h3></div><strong>Records nobody was trying to set.</strong><p>Championship droughts, title-game heartbreak, playoff futility and other completely objective forms of public accountability.</p><a href="/records">STATS DON'T LIE →</a></aside></div></section>
+<section class="shell archive-wrap"><div class="section-intro compact"><div class="eyebrow">The crown jewel</div><h2>Cathedral Bowl archive</h2><p>Every champion has a story. Every runner-up has an excuse.</p></div><div class="archive-strip"><div><span class="archive-kicker">2006 → PRESENT</span><h3>20 YEARS OF<br/>CATHEDRAL BOWLS</h3><p>Relive every championship battle in the archive.</p><a href="/champions">VIEW ALL →</a></div>{recent.map((c:any)=><a class="archive-tile" href="/champions"><span>S{c.season}</span><b>{teamName(c.winnerTeamId)}</b><small>CATHEDRAL BOWL CHAMPION</small></a>)}</div></section>
 </main>
 </BaseLayout>
