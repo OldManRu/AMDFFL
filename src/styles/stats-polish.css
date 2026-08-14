@@ -8,80 +8,93 @@
 
 .stat-ribbon b{
   font-size:3.15rem;
-  font-weight:800;
+  font-weight:850;
   line-height:.95;
-  letter-spacing:-.035em;
+  letter-spacing:-.045em;
 }
 
 .big-number{
   font-size:4.25rem;
-  font-weight:800;
-  letter-spacing:-.04em;
+  font-weight:850;
+  letter-spacing:-.05em;
 }
 
+/* Championship scores need clarity more than display-font personality. */
 .champ-score{
   position:relative;
   display:grid;
-  grid-template-columns:minmax(0,1fr) minmax(0,1fr);
-  gap:16px;
-  align-items:end;
-  padding-top:28px;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+  align-items:start;
+  margin:18px 0;
+  padding:28px 0 14px;
+  border-top:1px solid #3b3221;
+  border-bottom:1px solid #3b3221;
 }
 
-.champ-score>div{min-width:0}
+.champ-score>div{
+  display:flex;
+  min-width:0;
+  flex-direction:column;
+  gap:6px;
+}
+
 .champ-score>div:first-child{text-align:left}
-.champ-score .runner{text-align:right}
+.champ-score .runner{text-align:right;align-items:flex-end}
 
 .champ-score em{
   position:absolute;
   top:9px;
   left:50%;
   transform:translateX(-50%);
-  color:#7e8790;
+  color:#6f7780;
   font-size:.5rem;
   font-style:normal;
   font-weight:800;
-  letter-spacing:.12em;
-  white-space:nowrap;
+  letter-spacing:.14em;
 }
 
-.champ-score b{
+/* Beat the original .champ-score b rule in home.css with higher specificity. */
+.champ-card .champ-score b,
+.champ-card .champ-score .runner b{
   display:block;
-  max-width:100%;
-  font-family:"Arial Narrow","Helvetica Neue",Arial,sans-serif;
-  font-variant-numeric:tabular-nums;
-  font-feature-settings:"tnum" 1;
+  width:auto;
+  max-width:none;
+  margin:0;
+  color:#f3f5f7;
+  font-family:"Arial Narrow","Roboto Condensed","Helvetica Neue",Arial,sans-serif;
+  font-size:1.5rem;
   font-stretch:condensed;
-  font-size:1.48rem;
-  font-weight:700;
+  font-weight:600;
   line-height:1;
-  letter-spacing:-.025em;
+  letter-spacing:-.035em;
   white-space:nowrap;
   text-shadow:none;
 }
 
-.champ-score .runner b{
-  color:#a7afb8;
-}
+.champ-card .champ-score .runner b{color:#aeb7c2}
 
-.champ-score small{
+.champ-score small,
+.champ-score .runner small{
   display:block;
-  max-width:none;
-  margin-top:6px;
-  color:#7e8790;
-  font-size:.52rem;
-  font-weight:800;
+  width:100%;
+  max-width:105px;
+  color:#8290a0;
+  font-size:.5rem;
+  font-weight:700;
   line-height:1.12;
+  letter-spacing:0;
 }
 
 .archive-tile span{
   font-size:1.85rem;
-  font-weight:800;
-  letter-spacing:-.025em;
+  font-weight:850;
+  letter-spacing:-.035em;
 }
 
 @media(max-width:720px){
   .stat-ribbon b{font-size:2.7rem}
-  .champ-score{gap:12px}
-  .champ-score b{font-size:1.38rem}
+  .champ-score{gap:16px}
+  .champ-card .champ-score b,
+  .champ-card .champ-score .runner b{font-size:1.4rem}
 }
