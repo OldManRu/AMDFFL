@@ -1,6 +1,5 @@
 .stat-ribbon b,
 .big-number,
-.champ-score b,
 .archive-tile span{
   font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
   font-variant-numeric:tabular-nums;
@@ -9,72 +8,80 @@
 
 .stat-ribbon b{
   font-size:3.15rem;
-  font-weight:850;
+  font-weight:800;
   line-height:.95;
-  letter-spacing:-.045em;
+  letter-spacing:-.035em;
 }
 
 .big-number{
   font-size:4.25rem;
-  font-weight:850;
-  letter-spacing:-.05em;
+  font-weight:800;
+  letter-spacing:-.04em;
 }
 
-/* Give each championship score real horizontal space instead of forcing a third center column. */
 .champ-score{
   position:relative;
   display:grid;
   grid-template-columns:minmax(0,1fr) minmax(0,1fr);
-  gap:18px;
+  gap:16px;
   align-items:end;
-  padding-top:29px;
+  padding-top:28px;
 }
 
-.champ-score>div{
-  min-width:0;
-}
-
-.champ-score>div:first-child{
-  text-align:left;
-}
-
-.champ-score .runner{
-  text-align:right;
-}
+.champ-score>div{min-width:0}
+.champ-score>div:first-child{text-align:left}
+.champ-score .runner{text-align:right}
 
 .champ-score em{
   position:absolute;
-  top:10px;
+  top:9px;
   left:50%;
   transform:translateX(-50%);
+  color:#7e8790;
+  font-size:.5rem;
+  font-style:normal;
+  font-weight:800;
+  letter-spacing:.12em;
   white-space:nowrap;
 }
 
 .champ-score b{
   display:block;
   max-width:100%;
-  font-size:1.62rem;
-  font-weight:850;
+  font-family:"Arial Narrow","Helvetica Neue",Arial,sans-serif;
+  font-variant-numeric:tabular-nums;
+  font-feature-settings:"tnum" 1;
+  font-stretch:condensed;
+  font-size:1.48rem;
+  font-weight:700;
   line-height:1;
-  letter-spacing:0;
+  letter-spacing:-.025em;
   white-space:nowrap;
+  text-shadow:none;
+}
+
+.champ-score .runner b{
+  color:#a7afb8;
 }
 
 .champ-score small{
   display:block;
   max-width:none;
-  margin-top:5px;
-  line-height:1.2;
+  margin-top:6px;
+  color:#7e8790;
+  font-size:.52rem;
+  font-weight:800;
+  line-height:1.12;
 }
 
 .archive-tile span{
   font-size:1.85rem;
-  font-weight:850;
-  letter-spacing:-.035em;
+  font-weight:800;
+  letter-spacing:-.025em;
 }
 
 @media(max-width:720px){
   .stat-ribbon b{font-size:2.7rem}
   .champ-score{gap:12px}
-  .champ-score b{font-size:1.48rem}
+  .champ-score b{font-size:1.38rem}
 }
