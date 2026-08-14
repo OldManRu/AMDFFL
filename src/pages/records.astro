@@ -14,7 +14,13 @@ const teamById = new Map(teams.map((t:any)=>[t.teamId,t]));
 const currentSeason = Math.max(...bowls.map((b:any)=>b.season));
 const leagueStartYear = 2006;
 const seasonYear = (season:number) => leagueStartYear + season - 1;
-const archiveDate = (season:number) => `${seasonYear(season)}-12-31`;
+const secondSundayOfFebruary = (season:number) => {
+  const year = seasonYear(season) + 1;
+  const first = new Date(Date.UTC(year,1,1));
+  const firstSunday = 1 + ((7 - first.getUTCDay()) % 7);
+  const day = firstSunday + 7;
+  return `${year}-02-${String(day).padStart(2,'0')}`;
+};
 const leagueArchiveStart = `${leagueStartYear}-01-01`;
 const legacy = franchises.map((f:any)=>{
   const lineage = teams.filter((t:any)=>t.franchiseId===f.franchiseId);
@@ -37,7 +43,7 @@ const droughts = [...legacy].sort((a,b)=>(b.drought ?? 999)-(a.drought ?? 999));
 <section class="legacy-zone"><div class="shell section-shell"><div class="section-title"><div><div class="eyebrow">Cathedral Bowl history</div><h2>Championship Legacy</h2></div><p>Appearances are nice. Titles are what survive the group chat.</p></div><div class="legacy-table"><div class="legacy-row head"><span>Franchise</span><span>Titles</span><span>Apps</span><span>Last Title</span></div>{legacy.map((r:any)=><div class="legacy-row"><strong>{r.name}</strong><span>{r.titles}</span><span>{r.appearances}</span><span>{r.lastTitle ? `S${r.lastTitle}` : '—'}</span></div>)}</div><p class="note">Seasons 7–8 remain pending in the archive, so championship totals will update when those results are restored.</p></div></section>
 
 <section class="drought-zone"><div class="shell section-shell"><div class="section-title"><div><div class="eyebrow">Current suffering</div><h2>Championship Drought Watch</h2></div><p>A completely necessary public service for franchises wondering exactly how long it has been.</p></div><div class="drought-grid">{droughts.map((r:any)=><article class="card drought-card"><strong>{r.drought===null?'NEVER':r.drought}</strong><span>{r.drought===null?'TITLE ON RECORD':r.drought===1?'SEASON':'SEASONS'}</span><h3>{r.name}</h3><p>{r.lastTitle ? `Last title: Season ${r.lastTitle}` : 'No championship currently recorded.'}</p></article>)}</div>
-<div class="days-since-block"><div class="days-since-head"><div><div class="eyebrow">Because seasons weren't specific enough</div><h2>Days Since Last Championship</h2></div><p>Now the suffering can be measured with unnecessary precision.</p></div><div class="days-since-grid">{droughts.map((r:any)=><article class="days-since-card"><span class="days-label">DAYS SINCE LAST TITLE</span><strong class="days-counter" data-since={r.lastTitle ? archiveDate(r.lastTitle) : leagueArchiveStart}>—</strong><h3>{r.name}</h3><p>{r.lastTitle ? `Season ${r.lastTitle} champion` : 'Still waiting for the first one.'}</p></article>)}</div><p class="days-note">Day counters use December 31 of each championship season as the archive date until exact historical Cathedral Bowl dates are restored.</p></div>
+<div class="days-since-block"><div class="days-since-head"><div><div class="eyebrow">Because seasons weren't specific enough</div><h2>Days Since Last Championship</h2></div><p>Now the suffering can be measured with unnecessary precision.</p></div><div class="days-since-grid">{droughts.map((r:any)=><article class="days-since-card"><span class="days-label">DAYS SINCE LAST TITLE</span><strong class="days-counter" data-since={r.lastTitle ? secondSundayOfFebruary(r.lastTitle) : leagueArchiveStart}>—</strong><h3>{r.name}</h3><p>{r.lastTitle ? `Season ${r.lastTitle} champion` : 'Still waiting for the first one.'}</p></article>)}</div><p class="days-note">The Cathedral Bowl is played on the second Sunday of February following each fantasy season. The archive remembers every day since.</p></div>
 </div></section>
 
 <section id="hall-of-shame" class="shame-zone"><div class="shell"><div class="section-title"><div><div class="eyebrow">Permanent record • No appeals</div><h2>The Hall of Shame</h2><p class="tagline">Records nobody was trying to set.</p></div><p>History isn't only written by the winners. Sometimes it is written by whoever managed to lose the hardest.</p></div><div class="records-grid shame-grid">{shame.map((r:any)=><article class="card shame-card"><span class="eyebrow">Inducted for historic ineptitude</span><h3>{r.record}</h3><strong>{r.value}</strong><p>{r.detail}</p></article>)}</div><p class="warning">Rebranding does not erase the record. The archive remembers.</p></div></section>
