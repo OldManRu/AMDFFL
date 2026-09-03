@@ -1,10 +1,11 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import '../styles/head-to-head.css';
+import h2hHistorical from '../../data/head-to-head/historical.json';
 import h2h2025 from '../../data/head-to-head/2025.json';
 import h2h2024 from '../../data/head-to-head/2024.json';
 
-const datasets: Record<string, any> = { '2025': h2h2025, '2024': h2h2024 };
+const datasets: Record<string, any> = { historical: h2hHistorical, '2025': h2h2025, '2024': h2h2024 };
 const current = h2h2025 as any;
 const initialA = 'lamar-trojans';
 const initialB = 'simi-valley-pioneers';
@@ -21,8 +22,9 @@ const initialB = 'simi-valley-pioneers';
 
     <section class="shell matchup">
       <div class="year-row">
-        <label>HEAD-TO-HEAD YEAR
+        <label>HEAD-TO-HEAD ARCHIVE
           <select id="year-select">
+            <option value="historical">Historical</option>
             <option value="2025" selected>2025</option>
             <option value="2024">2024</option>
           </select>
@@ -74,6 +76,19 @@ const initialB = 'simi-valley-pioneers';
       const names=data=>Object.fromEntries(data.teams.map(t=>[t.key,t.name]));
 
       function getPair(data,x,y){
+        if(data.compact){
+          const xi=data.teams.findIndex(t=>t.key===x);
+          const yi=data.teams.findIndex(t=>t.key===y);
+          const forward=xi<yi;
+          const lo=Math.min(xi,yi),hi=Math.max(xi,yi);
+          const row=data.pairs.find(p=>p[0]===lo&&p[1]===hi);
+          if(!row)return {regular:[0,0,0],playoffs:[0,0,0],overall:[0,0,0]};
+          const regular=[row[2],row[3],row[4]];
+          const playoffs=[row[5],row[6],row[7]];
+          const overall=regular.map((v,i)=>v+playoffs[i]);
+          if(forward)return {regular,playoffs,overall};
+          return {regular:reverse(regular),playoffs:reverse(playoffs),overall:reverse(overall)};
+        }
         const direct=data.pairs.find(p=>p.a===x&&p.b===y);
         if(direct)return direct;
         const flipped=data.pairs.find(p=>p.a===y&&p.b===x);
