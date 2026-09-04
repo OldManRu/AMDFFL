@@ -24,11 +24,13 @@ const explicitStartYears: Record<string, number> = {
   'deckerville-eagles': 2024,
   'illini-west-chargers': 2025,
   'excelsior-springs-tigers': 2022,
+  'east-grand-rapids-pioneers': 2012,
 };
 const explicitDaysSinceDates: Record<string, string> = {
   'deckerville-eagles': '2024-01-01',
   'illini-west-chargers': '2025-01-01',
   'excelsior-springs-tigers': '2022-01-01',
+  'east-grand-rapids-pioneers': '2012-01-01',
 };
 const secondSundayOfFebruary = (season:number) => {
   const year = seasonYear(season) + 1;
@@ -98,6 +100,7 @@ const droughts = [...legacy].sort((a,b)=>(b.drought ?? 999)-(a.drought ?? 999));
       'deckerville-eagles': '2024-01-01',
       'illini-west-chargers': '2025-01-01',
       'excelsior-springs-tigers': '2022-01-01',
+      'east-grand-rapids-pioneers': '2012-01-01',
     };
     const today = new Date();
     today.setHours(0,0,0,0);
