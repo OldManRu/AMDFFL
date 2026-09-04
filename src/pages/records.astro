@@ -20,6 +20,9 @@ const currentSeason = Math.max(...bowls.map((b:any)=>b.season));
 const currentBowl = bowls.find((b:any)=>b.season===currentSeason);
 const leagueStartYear = 2006;
 const seasonYear = (season:number) => leagueStartYear + season - 1;
+const explicitStartYears: Record<string, number> = {
+  'deckerville-eagles': 2024,
+};
 const secondSundayOfFebruary = (season:number) => {
   const year = seasonYear(season) + 1;
   const first = new Date(Date.UTC(year,1,1));
@@ -57,7 +60,7 @@ const legacy = franchises.map((f:any)=>{
   const lastTitle = wins.length ? Math.max(...wins.map((b:any)=>b.season)) : null;
   const current = teamById.get(f.activeTeamId) as any;
   const formerNames = [...new Set(lineage.filter((t:any)=>t.teamId!==f.activeTeamId).map((t:any)=>t.name).filter(Boolean))];
-  const startYear = standingsStartYear(current) ?? recordedStartYear(current);
+  const startYear = explicitStartYears[current?.teamId] ?? standingsStartYear(current) ?? recordedStartYear(current);
   const reigning = currentBowl ? ids.has(currentBowl.winnerTeamId) : false;
   return {name:current?.name ?? `Franchise ${f.franchiseId}`,titles:wins.length,appearances:wins.length+losses.length,lastTitle,drought:lastTitle===null?null:currentSeason-lastTitle,startYear,reigning,formerNames};
 }).sort((a,b)=>b.titles-a.titles || b.appearances-a.appearances || a.name.localeCompare(b.name));
