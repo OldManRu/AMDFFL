@@ -11,10 +11,7 @@ const shame = headlines.filter((r:any) => shameLabels.includes(r.record));
 const mods = import.meta.glob('../../data/championships/*.json',{eager:true});
 const bowls = Object.values(mods).flatMap((m:any)=>m.default ?? m);
 const sourceMods = import.meta.glob('../../data/source/franchises/**/*.json',{eager:true});
-const sourceEntries = Object.values(sourceMods).flatMap((m:any)=>{
-  const d=m.default??m;
-  return Array.isArray(d.entries)?d.entries:[d];
-});
+const sourceEntries = Object.values(sourceMods).flatMap((m:any)=>{ const d=m.default??m; return Array.isArray(d.entries)?d.entries:[d]; });
 const teamById = new Map(teams.map((t:any)=>[t.teamId,t]));
 const currentSeason = Math.max(...bowls.map((b:any)=>b.season));
 const currentBowl = bowls.find((b:any)=>b.season===currentSeason);
@@ -25,12 +22,14 @@ const explicitStartYears: Record<string, number> = {
   'illini-west-chargers': 2025,
   'excelsior-springs-tigers': 2022,
   'east-grand-rapids-pioneers': 2012,
+  'lees-summit-tigers-f6': 2019,
 };
 const explicitDaysSinceDates: Record<string, string> = {
   'deckerville-eagles': '2024-01-01',
   'illini-west-chargers': '2025-01-01',
   'excelsior-springs-tigers': '2022-01-01',
   'east-grand-rapids-pioneers': '2012-01-01',
+  'lees-summit-tigers-f6': '2019-01-01',
 };
 const secondSundayOfFebruary = (season:number) => {
   const year = seasonYear(season) + 1;
@@ -49,15 +48,8 @@ const recordedStartYear = (team:any) => {
   if(!team?.historicalId) return null;
   const entry = sourceEntries.find((e:any)=>String(e.slot??e.historicalId??'')===String(team.historicalId));
   const text = String(entry?.narrative??'');
-  const patterns = [
-    /first year\s*\((20\d{2})\)/i,
-    /(?:joined|started|took over|picked up|entered|came into|came in|began)[^.]{0,90}?(20\d{2})/i,
-    /(?:before|for) the (20\d{2}) season/i
-  ];
-  for(const pattern of patterns){
-    const match=text.match(pattern);
-    if(match) return Number(match[1]);
-  }
+  const patterns = [/first year\s*\((20\d{2})\)/i,/(?:joined|started|took over|picked up|entered|came into|came in|began)[^.]{0,90}?(20\d{2})/i,/(?:before|for) the (20\d{2}) season/i];
+  for(const pattern of patterns){ const match=text.match(pattern); if(match) return Number(match[1]); }
   return null;
 };
 const leagueArchiveStart = `${leagueStartYear}-01-01`;
@@ -81,17 +73,12 @@ const droughts = [...legacy].sort((a,b)=>(b.drought ?? 999)-(a.drought ?? 999));
 ---
 <BaseLayout title="Records | AMD FFL"><main class="records-page">
 <section class="page-head"><div class="shell records-intro"><div class="eyebrow">Receipts, preserved forever</div><h1>The Record Book</h1><p class="muted">Greatness, disaster, dominance, collapse — all reduced to numbers so nobody gets to rewrite history later.</p></div></section>
-
 <section class="shell section-shell"><div class="section-title"><div><div class="eyebrow">League benchmarks</div><h2>Marks of Greatness</h2></div><p>The numbers everybody wants attached to their name. Until somebody breaks them, these are the standards.</p></div><div class="records-grid">{glory.map((r:any)=><article class="card record-card"><span class="eyebrow">{r.record}</span><strong>{r.value}</strong><p>{r.detail}</p></article>)}</div></section>
-
 <section class="standings-zone"><div class="shell section-shell"><div class="section-title"><div><div class="eyebrow">The long view</div><h2>All-Time Standings</h2></div><p>Twenty seasons have a way of separating a hot streak from a body of work.</p></div><div class="standings-table"><div class="standings-row standings-head"><span>#</span><span>Team</span><span>W-L</span></div>{standings.map((r:any)=><div class="standings-row"><span>{r.sourceRank}</span><strong>{r.sourceLabel.replace(/^X-/,'')}</strong><span>{r.wins}-{r.losses}</span></div>)}</div></div></section>
-
 <section class="legacy-zone"><div class="shell section-shell"><div class="section-title"><div><div class="eyebrow">Cathedral Bowl history</div><h2>Championship Legacy</h2></div><p>Appearances are nice. Titles are what survive the group chat.</p></div><div class="legacy-table"><div class="legacy-row head"><span>Franchise</span><span>Titles</span><span>Apps</span><span>Last Title</span></div>{legacy.map((r:any)=><div class="legacy-row"><strong>{r.name}</strong><span>{r.titles}</span><span>{r.appearances}</span><span>{r.lastTitle ? `S${r.lastTitle}` : '—'}</span></div>)}</div><p class="note">Seasons 7–8 remain pending in the archive, so championship totals will update when those results are restored.</p></div></section>
-
 <section class="drought-zone"><div class="shell section-shell"><div class="section-title"><div><div class="eyebrow">Current suffering</div><h2>Championship Drought Watch</h2></div><p>A completely necessary public service for franchises wondering exactly how long it has been.</p></div><div class="drought-grid">{droughts.map((r:any)=><article class="card drought-card"><div class="drought-main"><strong>{r.drought===null?'NEVER':r.drought}</strong><span>{r.drought===null?'TITLE ON RECORD':r.drought===1?'SEASON':'SEASONS'}</span><h3>{r.name}</h3><p>{r.lastTitle ? `Last title: Season ${r.lastTitle}` : r.startYear ? `In the league since ${r.startYear}. Still waiting.` : 'No championship currently recorded.'}</p></div>{r.formerNames?.length > 0 && <aside class="drought-lineage" aria-label={`Former team identities for ${r.name}`}><span>FORMER IDENTITIES</span><div>{r.formerNames.map((name:string)=><em>{name}</em>)}</div></aside>}</article>)}</div>
 <div class="days-since-block"><div class="days-since-head"><div><div class="eyebrow">Because seasons weren't specific enough</div><h2>Days Since Last Championship</h2></div><p>Now the suffering can be measured with unnecessary precision.</p></div><div class="days-since-grid">{droughts.map((r:any)=><article class:list={['days-since-card',{reigning:r.reigning}]} data-team-id={r.teamId}><span class="days-label">{r.reigning?'REIGNING CHAMPION':'DAYS SINCE LAST TITLE'}</span><strong class="days-counter" data-team-id={r.teamId} data-reigning={r.reigning?'true':undefined} data-since={r.daysSinceDate}>{r.reigning?'0':'—'}</strong><h3>{r.name}</h3><p>{r.reigning ? `Season ${currentSeason} champion · Title currently held` : r.activeLastTitle ? `Season ${r.activeLastTitle} champion` : r.startYear ? `Waiting since joining in ${r.startYear}.` : 'Still waiting for the first one.'}</p></article>)}</div><p class="days-note">The reigning champion stays at 0 days until the next Cathedral Bowl crowns a new winner. All other championship dates use the second Sunday of February; teams without a title under their current identity start from their first season.</p></div>
 </div></section>
-
 <section id="hall-of-shame" class="shame-zone"><div class="shell"><div class="section-title"><div><div class="eyebrow">Permanent record • No appeals</div><h2>The Hall of Shame</h2><p class="tagline">Records nobody was trying to set.</p></div><p>History isn't only written by the winners. Sometimes it is written by whoever managed to lose the hardest.</p></div><div class="records-grid shame-grid">{shame.map((r:any)=><article class="card shame-card"><span class="eyebrow">Inducted for historic ineptitude</span><h3>{r.record}</h3><strong>{r.value}</strong><p>{r.detail}</p></article>)}</div><p class="warning">Rebranding does not erase the record. The archive remembers.</p></div></section>
 </main>
 <script is:inline>
@@ -101,14 +88,12 @@ const droughts = [...legacy].sort((a,b)=>(b.drought ?? 999)-(a.drought ?? 999));
       'illini-west-chargers': '2025-01-01',
       'excelsior-springs-tigers': '2022-01-01',
       'east-grand-rapids-pioneers': '2012-01-01',
+      'lees-summit-tigers-f6': '2019-01-01',
     };
     const today = new Date();
     today.setHours(0,0,0,0);
     document.querySelectorAll('.days-counter').forEach((el) => {
-      if (el.getAttribute('data-reigning') === 'true') {
-        el.textContent = '0';
-        return;
-      }
+      if (el.getAttribute('data-reigning') === 'true') { el.textContent = '0'; return; }
       const teamId = el.getAttribute('data-team-id');
       const sinceValue = (teamId && explicitStartDates[teamId]) || el.getAttribute('data-since');
       if (!sinceValue) return;
