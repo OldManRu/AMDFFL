@@ -30,14 +30,14 @@ const shortLabels:any = {
 };
 
 const trophyArt:any = {
-  manager_of_the_year:'/images/awards/trophy-manager.svg',
   defensive_player_of_the_year:'/images/awards/trophy-dpoy.svg'
 };
 
 const renderedArt:any = {
   league_mvp:'/images/awards/trophy-mvp-render.webp',
   offensive_rookie:'/images/awards/trophy-offensive-rookie-render.webp?v=2',
-  defensive_rookie:'/images/awards/trophy-defensive-rookie-render.webp?v=1'
+  defensive_rookie:'/images/awards/trophy-defensive-rookie-render.webp?v=1',
+  manager_of_the_year:'/images/awards/trophy-manager-render.webp?v=1'
 };
 
 const descriptions:any = {
@@ -82,8 +82,9 @@ const groups = order
       const isMvp = g.category === 'league_mvp';
       const isOffensiveRookie = g.category === 'offensive_rookie';
       const isDefensiveRookie = g.category === 'defensive_rookie';
-      const isRendered = isMvp || isOffensiveRookie || isDefensiveRookie;
-      return <article class:list={['trophy-display',{ 'rendered-mvp': isMvp, 'rendered-award': isRendered, 'rendered-offensive-rookie': isOffensiveRookie, 'rendered-defensive-rookie': isDefensiveRookie }]} data-category={g.category}>
+      const isManager = g.category === 'manager_of_the_year';
+      const isRendered = isMvp || isOffensiveRookie || isDefensiveRookie || isManager;
+      return <article class:list={['trophy-display',{ 'rendered-mvp': isMvp, 'rendered-award': isRendered, 'rendered-offensive-rookie': isOffensiveRookie, 'rendered-defensive-rookie': isDefensiveRookie, 'rendered-manager': isManager }]} data-category={g.category}>
         <header class="trophy-title">
           <span class="award-kicker">AMD FFL HARDWARE</span>
           <h2>{labels[g.category]}</h2>
