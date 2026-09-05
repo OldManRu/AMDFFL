@@ -30,6 +30,11 @@ const teamName = (id: string) => teams.find((team) => team.teamId === id)?.name 
           <div class="bowl-count"><strong>{cathedralGames.length}</strong><span>Title Games</span></div>
         </div>
 
+        <div class="bowl-trophy-stage cathedral-trophy-stage" aria-label="Golden Gale Cathedral Bowl championship trophy">
+          <div class="bowl-trophy-spotlight"></div>
+          <img class="bowl-trophy-art cathedral-trophy-art" src="/images/trophy-golden-gale-render.webp?v=1" alt="Golden Gale Cathedral Bowl championship trophy" />
+        </div>
+
         <div class="cathedral-grid">
           {cathedralGames.map((game: any) => (
             <article class="championship-card">
