@@ -1,0 +1,116 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import '../styles/awards-test.css';
+import { awards } from '../lib/awards';
+import { teams } from '../lib/teams';
+
+const order = [
+  'league_mvp',
+  'offensive_rookie',
+  'defensive_rookie',
+  'manager_of_the_year',
+  'defensive_player_of_the_year'
+];
+
+const labels:any = {
+  league_mvp:'League MVP',
+  offensive_rookie:'Offensive Rookie',
+  defensive_rookie:'Defensive Rookie',
+  manager_of_the_year:'Manager of the Year',
+  defensive_player_of_the_year:'Defensive Player of the Year'
+};
+
+const trophyMarks:any = {
+  league_mvp:'MVP',
+  offensive_rookie:'OR',
+  defensive_rookie:'DR',
+  manager_of_the_year:'MOY',
+  defensive_player_of_the_year:'DPOY'
+};
+
+const descriptions:any = {
+  league_mvp:'The league’s top individual honor.',
+  offensive_rookie:'The first-year offensive player who announced his arrival loudest.',
+  defensive_rookie:'The rookie defender who made Sundays miserable immediately.',
+  manager_of_the_year:'For the manager whose decisions survived the group chat and the standings.',
+  defensive_player_of_the_year:'The defender who spent the season wrecking otherwise reasonable plans.'
+};
+
+const grouped = awards.reduce((acc:any,a:any)=>{
+  (acc[a.category] ??= []).push(a);
+  return acc;
+},{});
+
+const teamName = (id:string) => teams.find((team:any)=>team.teamId===id)?.name ?? id.replaceAll('-',' ');
+
+const groups = order
+  .filter((category)=>grouped[category]?.length)
+  .map((category)=>({
+    category,
+    items: grouped[category].sort((a:any,b:any)=>b.season-a.season)
+  }));
+---
+<BaseLayout title="Awards Trophy Concept | AMD FFL">
+<main class="awards-test-page">
+  <section class="page-head trophy-hero">
+    <div class="shell">
+      <div class="eyebrow">Awards concept lab</div>
+      <h1>The Trophy Case</h1>
+      <p class="muted">A test treatment for turning the league awards into actual pieces of hardware. Each trophy carries its complete winner history on engraved plates built into the base.</p>
+      <div class="concept-note">TEST PAGE · CURRENT AWARDS PAGE UNCHANGED</div>
+    </div>
+  </section>
+
+  <section class="shell trophy-case" aria-label="AMD FFL award trophies">
+    {groups.map((g:any)=>{
+      const latest = g.items[0];
+      return <article class="trophy-display" data-category={g.category}>
+        <header class="trophy-title">
+          <div>
+            <span class="award-kicker">AMD FFL HARDWARE</span>
+            <h2>{labels[g.category]}</h2>
+            <p>{descriptions[g.category]}</p>
+          </div>
+          <span class="winner-count">{g.items.length} {g.items.length === 1 ? 'winner' : 'winners'}</span>
+        </header>
+
+        <div class="trophy-stage">
+          <div class="trophy-glow" aria-hidden="true"></div>
+          <div class="trophy" aria-hidden="true">
+            <div class="trophy-cup">
+              <div class="handle handle-left"></div>
+              <div class="handle handle-right"></div>
+              <div class="cup-rim"></div>
+              <div class="cup-bowl"><span>{trophyMarks[g.category]}</span></div>
+              <div class="cup-neck"></div>
+              <div class="cup-stem"></div>
+              <div class="cup-foot"></div>
+            </div>
+          </div>
+
+          <div class="current-winner">
+            <span class="current-label">Defending honoree</span>
+            <strong>{latest.player ?? latest.raw}</strong>
+            <span>Season {latest.season}{latest.teamId ? ` · ${teamName(latest.teamId)}` : ''}</span>
+          </div>
+
+          <div class="trophy-base">
+            <div class="base-top"></div>
+            <div class="plate-window" tabindex="0" aria-label={`${labels[g.category]} winners. Scroll to see all winners.`}>
+              <div class="plate-stack">
+                {g.items.map((a:any,index:number)=><div class:list={['name-plate',{current:index===0}]}>
+                  <span class="plate-season">S{a.season}</span>
+                  <span class="plate-name">{a.player ?? a.raw}</span>
+                  <span class="plate-team">{a.teamId ? teamName(a.teamId) : 'AMD FFL'}</span>
+                </div>)}
+              </div>
+            </div>
+            <div class="scroll-cue"><span>SCROLL WINNERS</span><b>↕</b></div>
+            <div class="base-foot"></div>
+          </div>
+        </div>
+      </article>
+    })}
+  </section>
+</main>
+</BaseLayout>
