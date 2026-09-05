@@ -3,7 +3,7 @@
 .hof-page .page-head:after{content:"HALL OF FAME";position:absolute;right:4%;bottom:-20px;color:rgba(217,173,79,.025);font-size:8rem;font-weight:950;letter-spacing:-.06em;white-space:nowrap;pointer-events:none}
 .hof-intro{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;gap:28px;max-width:1120px}
 .hof-intro-copy{max-width:760px}
-.hof-header-logo{display:block;width:clamp(115px,13vw,165px);height:auto;flex:0 0 auto;object-fit:contain;filter:drop-shadow(0 10px 18px rgba(0,0,0,.24))}
+.hof-header-logo{display:block;width:clamp(115px,15vw,190px);height:auto;flex:0 0 auto;object-fit:contain;filter:drop-shadow(0 10px 18px rgba(0,0,0,.24))}
 .hof-wrap{padding:50px 0 76px}
 .hof-year{position:relative;margin-bottom:58px;padding-top:22px}
 .hof-year:before{content:"";position:absolute;left:0;right:0;top:0;height:1px;background:linear-gradient(90deg,rgba(217,173,79,.5),rgba(217,173,79,.08) 45%,transparent)}
