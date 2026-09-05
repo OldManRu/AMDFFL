@@ -14,12 +14,13 @@
 .rendered-mvp .scroll-cue{height:25px;margin:0 -13px;color:#83663d}
 .rendered-mvp .trophy-base:after{height:19px;margin:0 -22px -15px;background:linear-gradient(180deg,#302820,#111214)}
 
-/* Rendered collection: the same physical pedestal language as MVP. */
 .rendered-offensive-rookie{width:100%;max-width:760px;justify-self:center}
 .rendered-offensive-rookie .trophy-title{padding-bottom:14px}
 .rendered-offensive-rookie .trophy-stage{min-height:0;padding:10px 18px 30px;background:radial-gradient(ellipse at 50% 27%,rgba(221,168,86,.16),transparent 36%)}
 .rendered-offensive-rookie .spotlight{top:-8px;width:325px;height:375px;opacity:.9}
-.rendered-offensive-rookie .rendered-trophy-wrap{width:min(54vw,420px);margin-bottom:-10px}
+/* The generated WEBP contains the checkerboard transparency preview as pixels. Crop it inside a dark viewport so only the trophy reads on-page. */
+.rendered-offensive-rookie .rendered-trophy-wrap{width:min(54vw,420px);aspect-ratio:1/1.12;margin:0 auto -10px;overflow:hidden;background:#0c0d0e;line-height:0;filter:drop-shadow(0 20px 20px rgba(0,0,0,.58))}
+.rendered-offensive-rookie .rendered-trophy-art{width:100%;height:100%;object-fit:cover;object-position:center;mix-blend-mode:normal}
 .rendered-offensive-rookie .trophy-base{width:min(90%,400px);margin:-1px auto 0;padding:12px 13px 0;border:1px solid #302820;border-top:0;border-radius:0 0 7px 7px;background:linear-gradient(90deg,#0d0e0f,#19130e 11%,#101011 50%,#19130e 89%,#0d0e0f);box-shadow:0 22px 30px rgba(0,0,0,.5),inset 0 1px rgba(199,151,76,.08)}
 .rendered-offensive-rookie .trophy-base:before{top:-6px;left:-7px;right:-7px;height:10px;border-color:#6a4e2c;background:linear-gradient(180deg,#6a543c,#181719)}
 .rendered-offensive-rookie .plate-window{height:194px;padding-top:1px}
