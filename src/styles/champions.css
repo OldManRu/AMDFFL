@@ -37,6 +37,11 @@
 .creston-section{margin-top:66px;padding-top:46px;border-top:1px solid var(--line)}
 .creston-section .section-head h2{color:#e0e3e6}
 .creston-section .eyebrow{color:#c86666}
+.bowl-trophy-stage{position:relative;display:grid;place-items:center;overflow:hidden;min-height:520px;margin:10px 0 26px;border:1px solid #2f2923;border-radius:14px;background:radial-gradient(ellipse at 50% 24%,rgba(213,157,77,.16),transparent 37%),linear-gradient(180deg,#151412,#0c0d0f 72%);box-shadow:0 24px 52px rgba(0,0,0,.24),inset 0 1px rgba(255,255,255,.025)}
+.bowl-trophy-spotlight{position:absolute;top:-38px;left:50%;width:420px;height:520px;transform:translateX(-50%);clip-path:polygon(36% 0,64% 0,100% 100%,0 100%);background:linear-gradient(180deg,rgba(255,224,162,.12),rgba(220,166,85,.035) 62%,transparent);filter:blur(3px);pointer-events:none}
+.bowl-trophy-art{position:relative;z-index:1;display:block;width:min(62vw,470px);height:auto;margin:18px auto;filter:drop-shadow(0 26px 28px rgba(0,0,0,.62)) saturate(.94) contrast(1.04)}
+.creston-trophy-stage{border-color:#3b2c27;background:radial-gradient(ellipse at 50% 24%,rgba(187,115,65,.15),transparent 38%),linear-gradient(180deg,#151311,#0b0c0e 72%)}
+.creston-trophy-art{width:min(58vw,450px)}
 .creston-wrap{overflow:auto;border:1px solid #45282a;border-radius:12px;background:linear-gradient(180deg,#151216,#0f1114);box-shadow:0 18px 42px rgba(0,0,0,.18)}
 .creston-table{min-width:820px;background:transparent}
 .creston-table th{background:#1b1518;color:#b8a2a5}
@@ -52,6 +57,8 @@
   .cathedral-grid{grid-template-columns:1fr}
   .section-head{grid-template-columns:1fr}
   .bowl-count{justify-self:start;text-align:left}
+  .bowl-trophy-stage{min-height:470px}
+  .bowl-trophy-art{width:min(72vw,430px)}
 }
 @media(max-width:560px){
   .champions-content{padding-top:34px}
@@ -61,4 +68,7 @@
   .finalist-score{font-size:1.65rem}
   .final-marker:before,.final-marker:after{height:26px}
   .championship-watermark{font-size:5.2rem}
+  .bowl-trophy-stage{min-height:390px;margin-bottom:20px}
+  .bowl-trophy-spotlight{width:320px;height:410px}
+  .bowl-trophy-art,.creston-trophy-art{width:min(88vw,350px);margin:10px auto}
 }
