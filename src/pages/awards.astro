@@ -44,6 +44,22 @@ const grouped = awards.reduce((acc:any,a:any)=>{
 
 const teamName = (id:string) => teams.find((team:any)=>team.teamId===id)?.name ?? id.replaceAll('-',' ');
 
+const awardDisplayName = (a:any) => {
+  if (a.player) return `${a.position ? `${a.position} ` : ''}${a.player}`;
+  if (a.raw) return String(a.raw).split(',')[0].trim();
+  return 'Unknown';
+};
+
+const awardPoints = (a:any) => {
+  if (typeof a.points === 'number') return a.points;
+  if (!a.raw) return null;
+  const raw = String(a.raw);
+  const match = raw.match(/(?:,|\s)(\d+(?:\.\d+)?)\s*(?:pts?)?\s*$/i);
+  return match ? Number(match[1]) : null;
+};
+
+const formatPoints = (value:number|null) => value === null ? null : Number.isInteger(value) ? value.toFixed(0) : String(value);
+
 const groups = order
   .filter((category)=>grouped[category]?.length)
   .map((category)=>({
@@ -85,11 +101,15 @@ const groups = order
           <div class="trophy-base">
             <div class="plate-window" tabindex="0" aria-label={`${labels[g.category]} winners. Scroll to see all winners.`}>
               <div class="plate-stack">
-                {g.items.map((a:any,index:number)=><div class:list={['name-plate',{current:index===0}]}>
-                  <span class="plate-season">S{a.season}</span>
-                  <span class="plate-name">{a.player ?? a.raw}</span>
-                  <span class="plate-team">{a.teamId ? teamName(a.teamId) : 'AMD FFL'}</span>
-                </div>)}
+                {g.items.map((a:any,index:number)=>{
+                  const points = awardPoints(a);
+                  return <div class:list={['name-plate',{current:index===0,'has-points':points!==null}]}>
+                    <span class="plate-season">S{a.season}</span>
+                    <span class="plate-name">{awardDisplayName(a)}</span>
+                    {points !== null && <span class="plate-points">{formatPoints(points)} PTS</span>}
+                    <span class="plate-team">{a.teamId ? teamName(a.teamId) : 'AMD FFL'}</span>
+                  </div>
+                })}
               </div>
             </div>
             <div class="scroll-cue"><span>SCROLL WINNERS</span><b>↕</b></div>
