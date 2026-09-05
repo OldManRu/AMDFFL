@@ -29,15 +29,12 @@ const shortLabels:any = {
   defensive_player_of_the_year:'DPOY'
 };
 
-const trophyArt:any = {
-  defensive_player_of_the_year:'/images/awards/trophy-dpoy.svg'
-};
-
 const renderedArt:any = {
   league_mvp:'/images/awards/trophy-mvp-render.webp',
   offensive_rookie:'/images/awards/trophy-offensive-rookie-render.webp?v=2',
   defensive_rookie:'/images/awards/trophy-defensive-rookie-render.webp?v=1',
-  manager_of_the_year:'/images/awards/trophy-manager-render.webp?v=1'
+  manager_of_the_year:'/images/awards/trophy-manager-render.webp?v=1',
+  defensive_player_of_the_year:'/images/awards/trophy-dpoy-render.webp?v=1'
 };
 
 const descriptions:any = {
@@ -78,13 +75,13 @@ const groups = order
 
   <section class="shell trophy-gallery" aria-label="AMD FFL award trophies">
     {groups.map((g:any)=>{
-      const latest = g.items[0];
       const isMvp = g.category === 'league_mvp';
       const isOffensiveRookie = g.category === 'offensive_rookie';
       const isDefensiveRookie = g.category === 'defensive_rookie';
       const isManager = g.category === 'manager_of_the_year';
-      const isRendered = isMvp || isOffensiveRookie || isDefensiveRookie || isManager;
-      return <article class:list={['trophy-display',{ 'rendered-mvp': isMvp, 'rendered-award': isRendered, 'rendered-offensive-rookie': isOffensiveRookie, 'rendered-defensive-rookie': isDefensiveRookie, 'rendered-manager': isManager }]} data-category={g.category}>
+      const isDpoy = g.category === 'defensive_player_of_the_year';
+      const isRendered = isMvp || isOffensiveRookie || isDefensiveRookie || isManager || isDpoy;
+      return <article class:list={['trophy-display',{ 'rendered-mvp': isMvp, 'rendered-award': isRendered, 'rendered-offensive-rookie': isOffensiveRookie, 'rendered-defensive-rookie': isDefensiveRookie, 'rendered-manager': isManager, 'rendered-dpoy': isDpoy }]} data-category={g.category}>
         <header class="trophy-title">
           <span class="award-kicker">AMD FFL HARDWARE</span>
           <h2>{labels[g.category]}</h2>
@@ -93,20 +90,7 @@ const groups = order
 
         <div class="trophy-stage">
           <div class="spotlight" aria-hidden="true"></div>
-          {isRendered
-            ? <div class="rendered-trophy-wrap"><img class="rendered-trophy-art" src={renderedArt[g.category]} alt={`AMD FFL ${labels[g.category]} trophy`} /></div>
-            : <img class="trophy-art" src={trophyArt[g.category]} alt="" loading="lazy" />}
-
-          {!isRendered && <div class="trophy-nameplate" aria-hidden="true">
-            <strong>{shortLabels[g.category]}</strong>
-            <span>AMD FFL</span>
-          </div>}
-
-          {!isRendered && <div class="current-winner">
-            <span>Defending honoree</span>
-            <strong>{latest.player ?? latest.raw}</strong>
-            <small>Season {latest.season}{latest.teamId ? ` · ${teamName(latest.teamId)}` : ''}</small>
-          </div>}
+          <div class="rendered-trophy-wrap"><img class="rendered-trophy-art" src={renderedArt[g.category]} alt={`AMD FFL ${labels[g.category]} trophy`} /></div>
 
           <div class="trophy-base">
             <div class="plate-window" tabindex="0" aria-label={`${labels[g.category]} winners. Scroll to see all winners.`}>
