@@ -93,11 +93,11 @@ const groups = order
             <span>AMD FFL</span>
           </div>}
 
-          <div class="current-winner">
+          {!isMvp && <div class="current-winner">
             <span>Defending honoree</span>
             <strong>{latest.player ?? latest.raw}</strong>
             <small>Season {latest.season}{latest.teamId ? ` · ${teamName(latest.teamId)}` : ''}</small>
-          </div>
+          </div>}
 
           <div class="trophy-base">
             <div class="plate-window" tabindex="0" aria-label={`${labels[g.category]} winners. Scroll to see all winners.`}>
