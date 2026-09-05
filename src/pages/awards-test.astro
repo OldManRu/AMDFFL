@@ -3,7 +3,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import '../styles/awards-test.css';
 import { awards } from '../lib/awards';
 import { teams } from '../lib/teams';
-import { mvpTrophyRender } from '../lib/mvpTrophyRender';
 
 const order = [
   'league_mvp',
@@ -86,7 +85,7 @@ const groups = order
         <div class="trophy-stage">
           <div class="spotlight" aria-hidden="true"></div>
           {isMvp
-            ? <div class="rendered-trophy-wrap"><img class="rendered-trophy-art" src={mvpTrophyRender} alt="AMD FFL MVP trophy" /></div>
+            ? <div class="rendered-trophy-wrap"><img class="rendered-trophy-art" src="/images/awards/trophy-mvp-render.webp" alt="AMD FFL MVP trophy" /></div>
             : <img class="trophy-art" src={trophyArt[g.category]} alt="" loading="lazy" />}
 
           {!isMvp && <div class="trophy-nameplate" aria-hidden="true">
