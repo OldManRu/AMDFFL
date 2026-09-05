@@ -1,7 +1,9 @@
 .hof-page{background:radial-gradient(circle at 50% 0,rgba(217,173,79,.065),transparent 25%),#0b0e12}
 .hof-page .page-head{position:relative;overflow:hidden;border-bottom:1px solid rgba(217,173,79,.2);background:radial-gradient(circle at 50% 10%,rgba(217,173,79,.12),transparent 32%),linear-gradient(180deg,#11161c,#0b0e12)}
 .hof-page .page-head:after{content:"HALL OF FAME";position:absolute;right:4%;bottom:-20px;color:rgba(217,173,79,.025);font-size:8rem;font-weight:950;letter-spacing:-.06em;white-space:nowrap;pointer-events:none}
-.hof-intro{max-width:760px}
+.hof-intro{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;gap:42px;max-width:1120px}
+.hof-intro-copy{max-width:760px}
+.hof-header-logo{display:block;width:clamp(180px,22vw,300px);height:auto;flex:0 0 auto;object-fit:contain;filter:drop-shadow(0 18px 28px rgba(0,0,0,.28))}
 .hof-wrap{padding:50px 0 76px}
 .hof-year{position:relative;margin-bottom:58px;padding-top:22px}
 .hof-year:before{content:"";position:absolute;left:0;right:0;top:0;height:1px;background:linear-gradient(90deg,rgba(217,173,79,.5),rgba(217,173,79,.08) 45%,transparent)}
@@ -26,5 +28,6 @@
 .credential span{display:block;margin-top:5px;color:#74808b;font-size:.54rem;font-weight:900;letter-spacing:.1em;text-transform:uppercase}
 .hof-source{position:relative;z-index:1;margin:15px 0 0;color:#aab2ba;font-size:.8rem;line-height:1.45}
 .hof-footer{margin-top:18px;padding:16px 18px;border-left:3px solid #b58d3c;background:#121316;color:#8d9298;font-size:.78rem}
-@media(max-width:900px){.hof-grid{grid-template-columns:repeat(2,1fr)}.hof-page .page-head:after{font-size:5.5rem}}
-@media(max-width:620px){.hof-grid{grid-template-columns:1fr}.year-badge{width:62px;height:62px}.year-copy h2{font-size:1.65rem}.hof-card{min-height:210px}.hof-page .page-head:after{font-size:3.6rem}}
+@media(max-width:900px){.hof-grid{grid-template-columns:repeat(2,1fr)}.hof-page .page-head:after{font-size:5.5rem}.hof-header-logo{width:clamp(160px,25vw,230px)}}
+@media(max-width:620px){.hof-intro{gap:18px}.hof-header-logo{width:120px}.hof-grid{grid-template-columns:1fr}.year-badge{width:62px;height:62px}.year-copy h2{font-size:1.65rem}.hof-card{min-height:210px}.hof-page .page-head:after{font-size:3.6rem}}
+@media(max-width:430px){.hof-intro{align-items:flex-start}.hof-header-logo{width:92px;margin-top:8px}}
