@@ -6,17 +6,20 @@
 .memorial-page .page-head h1{margin-bottom:14px}
 .memorial-page .page-head p{max-width:720px;margin:0 auto;color:#aeb5bc;font-size:1.05rem;line-height:1.7}
 .memorial{max-width:1040px;padding:58px 0 82px}
+.memorial-entry{position:relative}
+.memorial-entry+.memorial-entry{margin-top:86px;padding-top:86px;border-top:1px solid rgba(217,173,79,.16)}
+.memorial-entry+.memorial-entry:before{content:"";position:absolute;top:-1px;left:50%;width:150px;height:1px;transform:translateX(-50%);background:linear-gradient(90deg,transparent,#8f7440,transparent)}
 .tribute{display:grid;grid-template-columns:300px minmax(0,1fr);gap:52px;align-items:start}
 .portrait{position:sticky;top:130px}
-.portrait-frame{position:relative;padding:10px;border:1px solid #3d3528;background:#111419;box-shadow:0 26px 65px rgba(0,0,0,.34)}
-.portrait-frame:before{content:"";position:absolute;inset:5px;border:1px solid rgba(217,173,79,.08);pointer-events:none}
-.portrait img{display:block;width:100%;filter:grayscale(12%) saturate(.88) contrast(1.02)}
+.portrait-frame{position:relative;padding:10px;border:1px solid #3d3528;background:#111419;box-shadow:0 26px 65px rgba(0,0,0,.34);overflow:hidden}
+.portrait-frame:before{content:"";position:absolute;inset:5px;border:1px solid rgba(217,173,79,.08);pointer-events:none;z-index:1}
+.portrait img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center top;filter:grayscale(12%) saturate(.88) contrast(1.02)}
 .identity{padding:22px 4px 0;text-align:center}
 .identity span{color:#9f8655;font-size:.62rem;font-weight:900;letter-spacing:.15em;text-transform:uppercase}
 .identity h2{margin:8px 0 5px;font-family:Georgia,"Times New Roman",serif;font-size:2.05rem;font-weight:600;letter-spacing:-.02em}
-.identity strong{color:#9da5ad;font-size:.82rem;font-weight:650}
+.identity strong{color:#9da5ad;font-size:.82rem;font-weight:650;line-height:1.45}
 .story{max-width:680px}
-.story .eyebrow{margin-bottom:18px;color:#b79a61;font-size:.66rem}
+.story .eyebrow{margin-bottom:18px;color:#d0aa60;font-size:.66rem}
 .story p{margin:0 0 22px;color:#c6cbd0;font-family:Georgia,"Times New Roman",serif;font-size:1.05rem;line-height:1.88}
 .story p:first-of-type:first-letter{float:left;margin:7px 8px 0 0;color:#d0ae68;font-size:3.3rem;line-height:.8;font-family:Georgia,"Times New Roman",serif}
 .story blockquote{position:relative;margin:34px 0 0;padding:26px 30px;border:0;border-top:1px solid #4b4030;border-bottom:1px solid #4b4030;background:rgba(217,173,79,.025);color:#e2e4e6;font-family:Georgia,"Times New Roman",serif;font-size:1.15rem;font-style:italic;line-height:1.72;text-align:center}
@@ -32,5 +35,6 @@
 .cathedral p{max-width:600px;margin:0 auto;color:#9ca4ac;font-family:Georgia,"Times New Roman",serif;font-size:1rem;line-height:1.7}
 .memorial-signoff{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:34px;color:#615b51;font-size:.58rem;font-weight:850;letter-spacing:.14em;text-transform:uppercase}
 .memorial-signoff:before,.memorial-signoff:after{content:"";width:38px;height:1px;background:#514839}
-@media(max-width:820px){.tribute{grid-template-columns:1fr;gap:38px}.portrait{position:static;max-width:300px;margin:0 auto}.story{max-width:none}.story .eyebrow{text-align:center}.legacy{margin-top:38px}}
-@media(max-width:600px){.memorial{padding-top:42px}.tribute{gap:32px}.story p{font-size:1rem;line-height:1.78}.story blockquote{padding:24px 18px;font-size:1.05rem}.legacy{grid-template-columns:1fr}.legacy-item{border-right:0;border-bottom:1px solid #302d29}.legacy-item:last-child{border-bottom:0}.cathedral{margin-top:44px;padding-inline:12px}.cathedral h3{font-size:1.7rem}}
+.memorial-signoff--entry{margin-top:54px}
+@media(max-width:820px){.memorial-entry+.memorial-entry{margin-top:64px;padding-top:64px}.tribute{grid-template-columns:1fr;gap:38px}.portrait{position:static;max-width:300px;margin:0 auto}.story{max-width:none}.story .eyebrow{text-align:center}.legacy{margin-top:38px}}
+@media(max-width:600px){.memorial{padding-top:42px}.memorial-entry+.memorial-entry{margin-top:52px;padding-top:52px}.tribute{gap:32px}.story p{font-size:1rem;line-height:1.78}.story blockquote{padding:24px 18px;font-size:1.05rem}.legacy{grid-template-columns:1fr}.legacy-item{border-right:0;border-bottom:1px solid #302d29}.legacy-item:last-child{border-bottom:0}.cathedral{margin-top:44px;padding-inline:12px}.cathedral h3{font-size:1.7rem}}
