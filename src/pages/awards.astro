@@ -58,7 +58,20 @@ const awardPoints = (a:any) => {
   return match ? Number(match[1]) : null;
 };
 
+const awardPercentage = (a:any) => {
+  if (typeof a.percentage === 'number') return `${a.percentage}%`;
+  if (!a.raw) return null;
+  const match = String(a.raw).match(/(\d+(?:\.\d+)?)\s*%\s*$/);
+  return match ? `${match[1]}%` : null;
+};
+
 const formatPoints = (value:number|null) => value === null ? null : Number.isInteger(value) ? value.toFixed(0) : String(value);
+
+const awardMetric = (a:any) => {
+  if (a.category === 'manager_of_the_year') return awardPercentage(a);
+  const points = awardPoints(a);
+  return points === null ? null : `${formatPoints(points)} PTS`;
+};
 
 const groups = order
   .filter((category)=>grouped[category]?.length)
@@ -102,11 +115,11 @@ const groups = order
             <div class="plate-window" tabindex="0" aria-label={`${labels[g.category]} winners. Scroll to see all winners.`}>
               <div class="plate-stack">
                 {g.items.map((a:any,index:number)=>{
-                  const points = awardPoints(a);
-                  return <div class:list={['name-plate',{current:index===0,'has-points':points!==null}]}>
+                  const metric = awardMetric(a);
+                  return <div class:list={['name-plate',{current:index===0,'has-points':metric!==null}]}>
                     <span class="plate-season">S{a.season}</span>
                     <span class="plate-name">{awardDisplayName(a)}</span>
-                    {points !== null && <span class="plate-points">{formatPoints(points)} PTS</span>}
+                    {metric !== null && <span class="plate-points">{metric}</span>}
                     <span class="plate-team">{a.teamId ? teamName(a.teamId) : 'AMD FFL'}</span>
                   </div>
                 })}
