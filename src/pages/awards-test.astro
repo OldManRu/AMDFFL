@@ -20,12 +20,20 @@ const labels:any = {
   defensive_player_of_the_year:'Defensive Player of the Year'
 };
 
-const trophyMarks:any = {
+const shortLabels:any = {
   league_mvp:'MVP',
-  offensive_rookie:'OR',
-  defensive_rookie:'DR',
-  manager_of_the_year:'MOY',
+  offensive_rookie:'Offensive Rookie',
+  defensive_rookie:'Defensive Rookie',
+  manager_of_the_year:'Manager of the Year',
   defensive_player_of_the_year:'DPOY'
+};
+
+const trophyArt:any = {
+  league_mvp:'/images/awards/trophy-mvp.svg',
+  offensive_rookie:'/images/awards/trophy-offensive-rookie.svg',
+  defensive_rookie:'/images/awards/trophy-defensive-rookie.svg',
+  manager_of_the_year:'/images/awards/trophy-manager.svg',
+  defensive_player_of_the_year:'/images/awards/trophy-dpoy.svg'
 };
 
 const descriptions:any = {
@@ -52,50 +60,44 @@ const groups = order
 ---
 <BaseLayout title="Awards Trophy Concept | AMD FFL">
 <main class="awards-test-page">
-  <section class="page-head trophy-hero">
-    <div class="shell">
-      <div class="eyebrow">Awards concept lab</div>
-      <h1>The Trophy Case</h1>
-      <p class="muted">A test treatment for turning the league awards into actual pieces of hardware. Each trophy carries its complete winner history on engraved plates built into the base.</p>
+  <section class="trophy-hero">
+    <div class="hero-light hero-light-left"></div>
+    <div class="hero-light hero-light-right"></div>
+    <div class="shell trophy-hero-inner">
+      <div class="eyebrow">AMD FFL · Awards concept lab</div>
+      <h1>AMD FFL <span>Awards</span></h1>
+      <p>Legends are built here.</p>
+      <div class="hero-rule"></div>
       <div class="concept-note">TEST PAGE · CURRENT AWARDS PAGE UNCHANGED</div>
     </div>
   </section>
 
-  <section class="shell trophy-case" aria-label="AMD FFL award trophies">
+  <section class="shell trophy-gallery" aria-label="AMD FFL award trophies">
     {groups.map((g:any)=>{
       const latest = g.items[0];
       return <article class="trophy-display" data-category={g.category}>
         <header class="trophy-title">
-          <div>
-            <span class="award-kicker">AMD FFL HARDWARE</span>
-            <h2>{labels[g.category]}</h2>
-            <p>{descriptions[g.category]}</p>
-          </div>
-          <span class="winner-count">{g.items.length} {g.items.length === 1 ? 'winner' : 'winners'}</span>
+          <span class="award-kicker">AMD FFL HARDWARE</span>
+          <h2>{labels[g.category]}</h2>
+          <p>{descriptions[g.category]}</p>
         </header>
 
         <div class="trophy-stage">
-          <div class="trophy-glow" aria-hidden="true"></div>
-          <div class="trophy" aria-hidden="true">
-            <div class="trophy-cup">
-              <div class="handle handle-left"></div>
-              <div class="handle handle-right"></div>
-              <div class="cup-rim"></div>
-              <div class="cup-bowl"><span>{trophyMarks[g.category]}</span></div>
-              <div class="cup-neck"></div>
-              <div class="cup-stem"></div>
-              <div class="cup-foot"></div>
-            </div>
+          <div class="spotlight" aria-hidden="true"></div>
+          <img class="trophy-art" src={trophyArt[g.category]} alt="" loading="lazy" />
+
+          <div class="trophy-nameplate" aria-hidden="true">
+            <strong>{shortLabels[g.category]}</strong>
+            <span>AMD FFL</span>
           </div>
 
           <div class="current-winner">
-            <span class="current-label">Defending honoree</span>
+            <span>Defending honoree</span>
             <strong>{latest.player ?? latest.raw}</strong>
-            <span>Season {latest.season}{latest.teamId ? ` · ${teamName(latest.teamId)}` : ''}</span>
+            <small>Season {latest.season}{latest.teamId ? ` · ${teamName(latest.teamId)}` : ''}</small>
           </div>
 
           <div class="trophy-base">
-            <div class="base-top"></div>
             <div class="plate-window" tabindex="0" aria-label={`${labels[g.category]} winners. Scroll to see all winners.`}>
               <div class="plate-stack">
                 {g.items.map((a:any,index:number)=><div class:list={['name-plate',{current:index===0}]}>
@@ -106,11 +108,14 @@ const groups = order
               </div>
             </div>
             <div class="scroll-cue"><span>SCROLL WINNERS</span><b>↕</b></div>
-            <div class="base-foot"></div>
           </div>
         </div>
       </article>
     })}
+  </section>
+
+  <section class="shell awards-footer-line" aria-hidden="true">
+    <span></span><strong>SAME LEAGUE. HIGHER STANDARDS.</strong><span></span>
   </section>
 </main>
 </BaseLayout>
