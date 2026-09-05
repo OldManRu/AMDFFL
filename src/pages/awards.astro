@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import '../styles/awards.css';
+import '../styles/awards-test.css';
+import '../styles/awards-test-mvp.css';
 import { awards } from '../lib/awards';
 import { teams } from '../lib/teams';
 
@@ -20,12 +21,20 @@ const labels:any = {
   defensive_player_of_the_year:'Defensive Player of the Year'
 };
 
+const renderedArt:any = {
+  league_mvp:'/images/awards/trophy-mvp-render.webp',
+  offensive_rookie:'/images/awards/trophy-offensive-rookie-render.webp?v=2',
+  defensive_rookie:'/images/awards/trophy-defensive-rookie-render.webp?v=1',
+  manager_of_the_year:'/images/awards/trophy-manager-render.webp?v=1',
+  defensive_player_of_the_year:'/images/awards/trophy-dpoy-render.webp?v=1'
+};
+
 const descriptions:any = {
-  league_mvp:'The season’s standard-bearer. One name gets the top line.',
-  offensive_rookie:'First-year offensive players who arrived ready to cause problems.',
-  defensive_rookie:'First-year defenders who made themselves impossible to ignore.',
-  manager_of_the_year:'For the person who made enough correct decisions to deserve documentation.',
-  defensive_player_of_the_year:'The defenders who wrecked plans, ruined Sundays, and earned the hardware.'
+  league_mvp:'The league’s top individual honor.',
+  offensive_rookie:'The first-year offensive player who announced his arrival loudest.',
+  defensive_rookie:'The rookie defender who made Sundays miserable immediately.',
+  manager_of_the_year:'For the manager whose decisions survived the group chat and the standings.',
+  defensive_player_of_the_year:'The defender who spent the season wrecking otherwise reasonable plans.'
 };
 
 const grouped = awards.reduce((acc:any,a:any)=>{
@@ -42,18 +51,56 @@ const groups = order
     items: grouped[category].sort((a:any,b:any)=>b.season-a.season)
   }));
 ---
-<BaseLayout title="Awards | AMD FFL"><main class="awards-page">
-<section class="page-head"><div class="shell"><div class="eyebrow">League honors</div><h1>Awards</h1><p class="muted">Twenty seasons of MVPs, rookies, defenders, and managers who managed to look competent for at least one year.</p></div></section>
-<section class="shell award-groups">
-{groups.map((g:any)=><section class="award-group" data-category={g.category}>
-  <div class="award-group-head"><div class="award-seal" aria-hidden="true"></div><div><h2>{labels[g.category]}</h2><p>{descriptions[g.category]}</p></div></div>
-  <div class="award-grid">
-    {g.items.map((a:any,index:number)=><article class:list={['card','award-card',{latest:index===0}]} data-season={`S${a.season}`}>
-      <span class="season">Season {a.season}</span>
-      <strong>{a.player??a.raw}</strong>
-      {a.teamId&&<small>{teamName(a.teamId)}</small>}
-    </article>)}
-  </div>
-</section>)}
-</section>
-</main></BaseLayout>
+<BaseLayout title="Awards | AMD FFL">
+<main class="awards-test-page">
+  <section class="trophy-hero">
+    <div class="hero-light hero-light-left"></div>
+    <div class="hero-light hero-light-right"></div>
+    <div class="shell trophy-hero-inner">
+      <div class="eyebrow">AMD FFL · League honors</div>
+      <h1>AMD FFL <span>Awards</span></h1>
+      <p>Legends are built here.</p>
+      <div class="hero-rule"></div>
+    </div>
+  </section>
+
+  <section class="shell trophy-gallery" aria-label="AMD FFL award trophies">
+    {groups.map((g:any)=>{
+      const isMvp = g.category === 'league_mvp';
+      const isOffensiveRookie = g.category === 'offensive_rookie';
+      const isDefensiveRookie = g.category === 'defensive_rookie';
+      const isManager = g.category === 'manager_of_the_year';
+      const isDpoy = g.category === 'defensive_player_of_the_year';
+      return <article class:list={['trophy-display',{ 'rendered-mvp': isMvp, 'rendered-award': true, 'rendered-offensive-rookie': isOffensiveRookie, 'rendered-defensive-rookie': isDefensiveRookie, 'rendered-manager': isManager, 'rendered-dpoy': isDpoy }]} data-category={g.category}>
+        <header class="trophy-title">
+          <span class="award-kicker">AMD FFL HARDWARE</span>
+          <h2>{labels[g.category]}</h2>
+          <p>{descriptions[g.category]}</p>
+        </header>
+
+        <div class="trophy-stage">
+          <div class="spotlight" aria-hidden="true"></div>
+          <div class="rendered-trophy-wrap"><img class="rendered-trophy-art" src={renderedArt[g.category]} alt={`AMD FFL ${labels[g.category]} trophy`} /></div>
+
+          <div class="trophy-base">
+            <div class="plate-window" tabindex="0" aria-label={`${labels[g.category]} winners. Scroll to see all winners.`}>
+              <div class="plate-stack">
+                {g.items.map((a:any,index:number)=><div class:list={['name-plate',{current:index===0}]}>
+                  <span class="plate-season">S{a.season}</span>
+                  <span class="plate-name">{a.player ?? a.raw}</span>
+                  <span class="plate-team">{a.teamId ? teamName(a.teamId) : 'AMD FFL'}</span>
+                </div>)}
+              </div>
+            </div>
+            <div class="scroll-cue"><span>SCROLL WINNERS</span><b>↕</b></div>
+          </div>
+        </div>
+      </article>
+    })}
+  </section>
+
+  <section class="shell awards-footer-line" aria-hidden="true">
+    <span></span><strong>SAME LEAGUE. HIGHER STANDARDS.</strong><span></span>
+  </section>
+</main>
+</BaseLayout>
