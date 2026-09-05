@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import '../styles/awards-test.css';
 import { awards } from '../lib/awards';
 import { teams } from '../lib/teams';
+import { mvpTrophyRender } from '../lib/mvpTrophyRender';
 
 const order = [
   'league_mvp',
@@ -29,7 +30,6 @@ const shortLabels:any = {
 };
 
 const trophyArt:any = {
-  league_mvp:'/images/awards/trophy-mvp.svg',
   offensive_rookie:'/images/awards/trophy-offensive-rookie.svg',
   defensive_rookie:'/images/awards/trophy-defensive-rookie.svg',
   manager_of_the_year:'/images/awards/trophy-manager.svg',
@@ -75,7 +75,8 @@ const groups = order
   <section class="shell trophy-gallery" aria-label="AMD FFL award trophies">
     {groups.map((g:any)=>{
       const latest = g.items[0];
-      return <article class="trophy-display" data-category={g.category}>
+      const isMvp = g.category === 'league_mvp';
+      return <article class:list={['trophy-display',{ 'rendered-mvp': isMvp }]} data-category={g.category}>
         <header class="trophy-title">
           <span class="award-kicker">AMD FFL HARDWARE</span>
           <h2>{labels[g.category]}</h2>
@@ -84,12 +85,14 @@ const groups = order
 
         <div class="trophy-stage">
           <div class="spotlight" aria-hidden="true"></div>
-          <img class="trophy-art" src={trophyArt[g.category]} alt="" loading="lazy" />
+          {isMvp
+            ? <div class="rendered-trophy-wrap"><img class="rendered-trophy-art" src={mvpTrophyRender} alt="AMD FFL MVP trophy" /></div>
+            : <img class="trophy-art" src={trophyArt[g.category]} alt="" loading="lazy" />}
 
-          <div class="trophy-nameplate" aria-hidden="true">
+          {!isMvp && <div class="trophy-nameplate" aria-hidden="true">
             <strong>{shortLabels[g.category]}</strong>
             <span>AMD FFL</span>
-          </div>
+          </div>}
 
           <div class="current-winner">
             <span>Defending honoree</span>
