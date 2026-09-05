@@ -1,0 +1,50 @@
+.awards-test-page{min-height:100vh;background:radial-gradient(circle at 50% 0,rgba(204,160,64,.08),transparent 26%),linear-gradient(180deg,#090c10,#0b0e12 34%,#090b0e)}
+.awards-test-page .trophy-hero{position:relative;overflow:hidden;border-bottom:1px solid rgba(217,173,79,.18);background:radial-gradient(circle at 78% 18%,rgba(217,173,79,.12),transparent 27%),linear-gradient(180deg,#11161c,#0b0f13)}
+.awards-test-page .trophy-hero:after{content:"🏆";position:absolute;right:5%;bottom:-76px;filter:grayscale(1);opacity:.035;font-size:15rem;line-height:1;pointer-events:none}
+.awards-test-page .trophy-hero p{max-width:760px;font-size:1.05rem;line-height:1.65}
+.concept-note{display:inline-flex;margin-top:18px;padding:7px 10px;border:1px solid rgba(217,173,79,.34);border-radius:999px;color:#c8a34e;background:rgba(217,173,79,.05);font-size:.58rem;font-weight:900;letter-spacing:.14em}
+.trophy-case{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px;padding:52px 0 78px}
+.trophy-display{position:relative;overflow:hidden;border:1px solid #292d33;border-radius:18px;background:linear-gradient(160deg,rgba(22,26,31,.98),rgba(11,14,18,.98));box-shadow:0 24px 60px rgba(0,0,0,.22)}
+.trophy-display:first-child{grid-column:1/-1}
+.trophy-title{display:flex;justify-content:space-between;gap:22px;align-items:flex-start;padding:24px 26px 18px;border-bottom:1px solid rgba(255,255,255,.055)}
+.award-kicker{display:block;margin-bottom:8px;color:#b48a35;font-size:.55rem;font-weight:900;letter-spacing:.17em}
+.trophy-title h2{margin:0;color:#f2f3f4;font-size:clamp(1.55rem,2.5vw,2.2rem);line-height:1;text-transform:uppercase;letter-spacing:-.025em}
+.trophy-title p{max-width:610px;margin:9px 0 0;color:#808a95;font-size:.76rem;line-height:1.45}
+.winner-count{flex:0 0 auto;padding:6px 9px;border:1px solid #413820;border-radius:999px;color:#a78946;background:#15140f;font-size:.56rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+.trophy-stage{position:relative;min-height:660px;padding:24px 28px 30px;overflow:hidden;text-align:center;background:radial-gradient(circle at 50% 25%,rgba(217,173,79,.09),transparent 34%)}
+.trophy-display:first-child .trophy-stage{min-height:700px}
+.trophy-glow{position:absolute;top:90px;left:50%;width:360px;height:360px;transform:translateX(-50%);border-radius:50%;background:radial-gradient(circle,rgba(231,191,98,.12),rgba(151,107,30,.025) 52%,transparent 70%);filter:blur(4px);pointer-events:none}
+.trophy{position:relative;z-index:1;height:260px}
+.trophy-cup{position:absolute;top:4px;left:50%;width:230px;height:250px;transform:translateX(-50%)}
+.cup-rim{position:absolute;top:28px;left:50%;width:158px;height:23px;transform:translateX(-50%);border:1px solid #efcf7a;border-radius:50%;background:linear-gradient(180deg,#f5d982,#8d651f 48%,#e5bd5c 55%,#765319);box-shadow:0 4px 12px rgba(0,0,0,.38),inset 0 2px 2px rgba(255,255,255,.42)}
+.cup-bowl{position:absolute;top:39px;left:50%;display:grid;width:136px;height:112px;place-items:center;transform:translateX(-50%);clip-path:polygon(3% 0,97% 0,86% 64%,72% 88%,60% 98%,40% 98%,28% 88%,14% 64%);background:linear-gradient(105deg,#704d17 0,#d8aa46 16%,#ffdf84 35%,#9b6d21 51%,#f0ca68 72%,#775119 100%);box-shadow:inset 0 0 12px rgba(255,255,255,.25)}
+.cup-bowl:after{content:"";position:absolute;inset:7px 22px 27px;border-radius:50%;background:linear-gradient(115deg,rgba(255,255,255,.28),transparent 35%,rgba(0,0,0,.12) 70%,rgba(255,255,255,.12));opacity:.45}
+.cup-bowl span{position:relative;z-index:2;display:grid;width:58px;height:58px;place-items:center;border:1px solid rgba(89,58,14,.75);border-radius:50%;color:#684714;background:linear-gradient(145deg,#f9dc83,#c99737);box-shadow:0 2px 7px rgba(0,0,0,.22),inset 0 1px 2px rgba(255,255,255,.55);font-size:.71rem;font-weight:1000;letter-spacing:-.02em;text-shadow:0 1px rgba(255,255,255,.35)}
+.handle{position:absolute;top:46px;width:83px;height:84px;border:12px solid #bb8730;border-top-width:9px;border-radius:48% 42% 58% 48%;opacity:.95}
+.handle-left{left:12px;transform:rotate(-11deg);border-right-color:#e3b853}
+.handle-right{right:12px;transform:scaleX(-1) rotate(-11deg);border-right-color:#e3b853}
+.cup-neck{position:absolute;top:142px;left:50%;width:50px;height:22px;transform:translateX(-50%);border-radius:0 0 10px 10px;background:linear-gradient(90deg,#6f4d18,#e0b34e,#80591a)}
+.cup-stem{position:absolute;top:158px;left:50%;width:24px;height:48px;transform:translateX(-50%);clip-path:polygon(23% 0,77% 0,65% 100%,35% 100%);background:linear-gradient(90deg,#6c4816,#e7bb54 48%,#80591d)}
+.cup-foot{position:absolute;top:200px;left:50%;width:106px;height:34px;transform:translateX(-50%);clip-path:polygon(16% 0,84% 0,100% 100%,0 100%);border-radius:4px;background:linear-gradient(110deg,#6b4a18,#e5b950 36%,#9c6d22 62%,#d6a843);box-shadow:0 7px 12px rgba(0,0,0,.35)}
+.current-winner{position:relative;z-index:3;display:flex;min-height:88px;flex-direction:column;justify-content:center;align-items:center;margin:-2px auto 12px;padding:12px 20px}
+.current-label{margin-bottom:5px;color:#99783c;font-size:.5rem;font-weight:900;letter-spacing:.16em;text-transform:uppercase}
+.current-winner strong{color:#f4df9a;font-size:1.22rem;line-height:1.1}
+.current-winner span:last-child{margin-top:5px;color:#7e8791;font-size:.66rem;font-weight:700}
+.trophy-base{position:relative;z-index:2;width:min(100%,420px);margin:0 auto;filter:drop-shadow(0 18px 18px rgba(0,0,0,.4))}
+.base-top{height:28px;margin:0 20px -2px;border:1px solid #17191c;border-radius:7px 7px 2px 2px;background:linear-gradient(180deg,#3b2c20,#1d1713 60%,#0f1114)}
+.plate-window{position:relative;height:206px;padding:16px 18px;overflow-y:auto;overscroll-behavior:contain;border:1px solid #191b1e;border-bottom:0;background:linear-gradient(90deg,#17110d,#2a1c12 15%,#17110d 50%,#2a1d13 84%,#17110d);scrollbar-width:thin;scrollbar-color:#a47b32 #17110d;scroll-snap-type:y proximity}
+.plate-window::-webkit-scrollbar{width:7px}.plate-window::-webkit-scrollbar-track{background:#17110d}.plate-window::-webkit-scrollbar-thumb{border-radius:999px;background:#a47b32}
+.plate-stack{display:grid;gap:9px}
+.name-plate{display:grid;grid-template-columns:50px minmax(0,1fr) 112px;gap:10px;align-items:center;min-height:48px;padding:7px 11px;border:1px solid #81611f;border-radius:3px;background:linear-gradient(105deg,#8b671f,#e2b954 21%,#b1842e 47%,#efd074 70%,#7e5c1c);box-shadow:inset 0 1px 1px rgba(255,255,255,.4),0 2px 5px rgba(0,0,0,.3);color:#2c200e;text-align:left;scroll-snap-align:start}
+.name-plate.current{outline:2px solid rgba(241,209,119,.2);background:linear-gradient(105deg,#ad8029,#f3d06f 22%,#c99a3a 47%,#ffe08b 70%,#9a7025)}
+.plate-season{font-size:.62rem;font-weight:1000;letter-spacing:.04em}
+.plate-name{overflow:hidden;font-size:.77rem;font-weight:1000;text-overflow:ellipsis;white-space:nowrap;text-shadow:0 1px rgba(255,255,255,.22)}
+.plate-team{overflow:hidden;color:#4f3a15;font-size:.55rem;font-weight:850;text-align:right;text-overflow:ellipsis;white-space:nowrap;text-transform:uppercase}
+.scroll-cue{display:flex;height:28px;justify-content:center;align-items:center;gap:8px;border:1px solid #191b1e;border-top:1px solid #5c451d;background:#111317;color:#735f34;font-size:.47rem;font-weight:900;letter-spacing:.13em}
+.scroll-cue b{color:#b58e3f;font-size:.74rem}
+.base-foot{height:34px;margin:-1px -12px 0;border:1px solid #17191c;border-radius:3px 3px 9px 9px;background:linear-gradient(180deg,#3a2b20,#171512 72%,#0d0f12);box-shadow:inset 0 1px rgba(255,255,255,.035)}
+.trophy-display[data-category="league_mvp"] .trophy-cup{transform:translateX(-50%) scale(1.08)}
+.trophy-display[data-category="manager_of_the_year"] .cup-bowl span{font-size:.62rem}
+.trophy-display[data-category="defensive_player_of_the_year"] .cup-bowl span{font-size:.57rem}
+@media(max-width:980px){.trophy-case{grid-template-columns:1fr}.trophy-display:first-child{grid-column:auto}.trophy-stage,.trophy-display:first-child .trophy-stage{min-height:655px}}
+@media(max-width:620px){.trophy-case{padding:32px 0 54px}.trophy-title{padding:20px;flex-direction:column}.winner-count{align-self:flex-start}.trophy-stage{min-height:620px;padding:18px 12px 26px}.trophy{height:240px;transform:scale(.92);transform-origin:top center}.current-winner{margin-top:-18px}.plate-window{height:190px;padding:13px 11px}.name-plate{grid-template-columns:42px minmax(0,1fr);gap:8px}.plate-team{grid-column:2;text-align:left;margin-top:-5px}.trophy-base{width:94%}}
