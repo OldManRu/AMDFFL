@@ -1,6 +1,11 @@
 ---
-const { chapters=[] }=Astro.props;
+const { chapters=[], teams=[] }=Astro.props;
 const chapterTitle=(c:any)=>String(c.heading??c.team??'Franchise History').replace(/^\*/,'');
 const cleanNarrative=(value:any)=>String(value??'').replace(/\s*\.\.\.\s*and they all lived happily ever after\.?(?:\s*LOL)?'?\s*$/i,'');
+const normalize=(value:any)=>String(value??'').toLowerCase().replace(/[^a-z0-9]+/g,' ').trim();
+const helmetForChapter=(c:any)=>{
+  const haystack=normalize(`${c.team??''} ${c.heading??''}`);
+  return teams.find((team:any)=>team.helmet&&team.isHistorical&&(haystack.includes(normalize(team.name))||normalize(team.name).includes(haystack)))??null;
+};
 ---
-<div class="story"><div class="eyebrow">From the original archive</div><h2>The Story</h2>{chapters.map((c:any)=><article class="chapter"><h3>{chapterTitle(c)}</h3>{cleanNarrative(c.narrative).split('\n').filter(Boolean).map((x:string)=><p>{x.replace(/^[-–]\s*/,'')}</p>)}</article>)}</div>
+<div class="story"><div class="eyebrow">From the original archive</div><h2>The Story</h2>{chapters.map((c:any)=>{const storyTeam=helmetForChapter(c);return <article class:list={['chapter',{'chapter-with-helmet':storyTeam}]}><div class="chapter-copy"><h3>{chapterTitle(c)}</h3>{cleanNarrative(c.narrative).split('\n').filter(Boolean).map((x:string)=><p>{x.replace(/^[-–]\s*/,'')}</p>)}</div>{storyTeam&&<div class="chapter-helmet" aria-label={`${storyTeam.name} historical helmet`}><span>FORMER IDENTITY</span><img src={storyTeam.helmet} alt={`${storyTeam.name} helmet`} loading="lazy" /></div>}</article>})}</div>
