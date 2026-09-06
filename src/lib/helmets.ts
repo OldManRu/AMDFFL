@@ -1,6 +1,7 @@
 const helmetByTeamId: Record<string, string> = {
   'east-peoria-red-raiders': '/images/helmets/east_peoria.png',
   'cathedral-golden-gales': '/images/helmets/Cathedral.png',
+  'west-catholic-burrs': '/images/helmets/westcatholic.png',
   'deckerville-eagles': '/images/helmets/deckerville.png',
   'creston-polar-bears': '/images/helmets/creston.png',
   'excelsior-springs-tigers': '/images/helmets/excelsior.png',
