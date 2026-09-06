@@ -15,6 +15,7 @@ const helmetByTeamId: Record<string, string> = {
   'ridge-bolts': '/images/helmets/Ridge.png',
   'leto-falcons-f11': '/images/helmets/leto.png',
   'lees-summit-tigers-f12': '/images/helmets/leesummit.png',
+  'north-decatur-chargers': '/images/helmets/northdectur.png',
   'mervo-mustangs': '/images/helmets/mervo.png',
   'sandusky-redskins': '/images/helmets/sandusky.png',
 };
