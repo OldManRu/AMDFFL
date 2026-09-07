@@ -18,7 +18,10 @@ export function franchiseProfile(franchise:any){
  const id=franchise.franchiseId;
  const lineage=teams.filter((t:any)=>t.franchiseId===id);
  const current=lineage.find((t:any)=>t.teamId===franchise.activeTeamId);
- const chapters=sources.flatMap((m:any)=>{const d=m.default??m;const slot=d.franchiseSlot??Number(String(d.historicalId??'').split('.')[0]);if(slot!==id)return [];return Array.isArray(d.entries)?d.entries:[d];}).sort((a:any,b:any)=>chapterOrder(a)-chapterOrder(b));
+ const matchingSources=sources.flatMap((m:any)=>{const d=m.default??m;const slot=d.franchiseSlot??Number(String(d.historicalId??'').split('.')[0]);return slot===id?[d]:[];});
+ const chapters=matchingSources.some((d:any)=>Array.isArray(d.entries))
+  ? matchingSources.flatMap((d:any)=>Array.isArray(d.entries)?d.entries:[d])
+  : matchingSources.flatMap((d:any)=>Array.isArray(d.entries)?d.entries:[d]).sort((a:any,b:any)=>chapterOrder(a)-chapterOrder(b));
  const ids=new Set(lineage.map((t:any)=>t.teamId));
  const wins=bowls.filter((b:any)=>ids.has(b.winnerTeamId));
  const losses=bowls.filter((b:any)=>ids.has(b.loserTeamId));
